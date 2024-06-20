@@ -7,6 +7,7 @@ import {
   Image,
 } from "react-native";
 import React, { useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 import Logo from "../../assets/image/logo.png";
 import Icon from "react-native-vector-icons/Ionicons";
 import CheckBox from "expo-checkbox";
@@ -14,6 +15,11 @@ import CheckBox from "expo-checkbox";
 const LoginScreen = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    navigation.navigate("Dashboard");
+  };
 
   return (
     <View style={styles.container}>
@@ -39,7 +45,7 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <View style={styles.checkbox}>
