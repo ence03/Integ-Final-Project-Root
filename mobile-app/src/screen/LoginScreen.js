@@ -7,7 +7,7 @@ import {
   Image,
 } from "react-native";
 import React, { useState } from "react";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import Logo from "../../assets/image/logo.png";
 import Icon from "react-native-vector-icons/Ionicons";
 import CheckBox from "expo-checkbox";
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "top",
     alignItems: "center",
     flexDirection: "column",
+    paddingTop: 50,
   },
   passwordContainer: {
     width: "100%",
