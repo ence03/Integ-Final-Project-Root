@@ -2,9 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Dashboard from "./dashboard";
-import CourseManagement from "./course/CourseManagement";
-import LoginScreen from "./src/screen/LoginScreen"; 
+import Dashboard from "./src/screens/DashboardScreen";
+import CourseManagement from "./src/screens/CourseManagementScreen";
+import LoginScreen from "./src/screens/LoginScreen";
 
 const Stack = createStackNavigator();
 
@@ -25,7 +25,7 @@ export default function App() {
         <Stack.Screen
           name="CourseManagement"
           component={CourseManagement}
-          options={{ title: 'Course Management' }}
+          options={{ title: "Course Management" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
