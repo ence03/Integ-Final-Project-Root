@@ -18,7 +18,8 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    navigation.navigate("Dashboard");
+    navigation.navigate("Dashboard"); //for students na
+    // navigation.navigate("TeacherDashboard"); //for teacher na sya
   };
 
   return (
@@ -54,7 +55,7 @@ const LoginScreen = () => {
           onValueChange={setIsChecked}
           color={isChecked ? "#74aef5" : undefined}
         />
-        <Text>Remember me</Text>
+        <Text> Remember me</Text>
       </View>
     </View>
   );

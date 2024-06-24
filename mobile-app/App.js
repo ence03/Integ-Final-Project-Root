@@ -2,9 +2,15 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Dashboard from "./src/screens/DashboardScreen";
-import CourseManagement from "./src/screens/CourseManagementScreen";
+import Dashboard from "./src/screens/Students/StudentDashboard";
+import CourseManagement from "./src/screens/Students/StudentCourseManagement";
 import LoginScreen from "./src/screens/LoginScreen";
+import TeacherDashboard from "./src/screens/Teacher/TeacherDashboard";
+import TeacherCourseManagement from "./src/screens/Teacher/TeacherCourse&StudentManagement";
+import StudentGrade from "./src/screens/Students/StudentGrade";
+import StudentNotification from "./src/screens/Students/StudentNotification";
+
+
 
 const Stack = createStackNavigator();
 
@@ -18,6 +24,21 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
+          name="StudentGrade"
+          component={StudentGrade}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="StudentNotification"
+          component={StudentNotification}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TeacherDashboard"
+          component={TeacherDashboard}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="Dashboard"
           component={Dashboard}
           options={{ headerShown: false }}
@@ -25,8 +46,14 @@ export default function App() {
         <Stack.Screen
           name="CourseManagement"
           component={CourseManagement}
-          options={{ title: "Course Management" }}
+          options={{ headerShown: false }}
         />
+        <Stack.Screen
+          name="TeacherCourseManagement"
+          component={TeacherCourseManagement}
+          options={{ headerShown: false }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
