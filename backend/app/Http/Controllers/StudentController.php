@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enrollment;
+use App\Models\Student; // Import the Student model
 use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
@@ -12,6 +13,7 @@ class StudentController extends Controller
     {
         $file = $request->file('file');
         $existingRecordsMessage = '';
+        $missingStudentsMessage = '';
 
         // Open the CSV file
         if (($handle = fopen($file->getPathname(), 'r')) !== false) {
@@ -29,8 +31,17 @@ class StudentController extends Controller
                                                 ->first();
 
                     if ($existingRecord) {
-                        // If record exists, prepare a message (you can customize this message as per your needs)
+                        // If record exists, prepare a message
                         $existingRecordsMessage .= "Record with StudentID: {$data[1]} and Course_InstructorID: {$data[2]} already exists.\n";
+                        continue;
+                    }
+
+                    // Check if the student exists
+                    $studentExists = Student::where('StudentID', $data[1])->exists();
+
+                    if (!$studentExists) {
+                        // If student does not exist, prepare a message
+                        $missingStudentsMessage .= "StudentID: {$data[1]} does not exist in the students table.\n";
                         continue;
                     }
 
@@ -48,11 +59,15 @@ class StudentController extends Controller
             }
         }
 
-        // Check if there were existing records found and prepare the appropriate message
+        // Prepare appropriate messages
+        $message = 'CSV file imported successfully.';
         if (!empty($existingRecordsMessage)) {
-            return redirect()->back()->with('warning', nl2br('Some records were not imported due to existing data:' . PHP_EOL . $existingRecordsMessage));
+            $message .= nl2br("\nSome records were not imported due to existing data:\n" . $existingRecordsMessage);
+        }
+        if (!empty($missingStudentsMessage)) {
+            $message .= nl2br("\nSome records were not imported due to missing students:\n" . $missingStudentsMessage);
         }
 
-        return redirect()->back()->with('success', 'CSV file imported successfully.');
+        return redirect()->back()->with('success', $message);
     }
 }

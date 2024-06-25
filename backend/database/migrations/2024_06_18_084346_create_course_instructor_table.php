@@ -16,6 +16,9 @@ return new class extends Migration
                 $table->bigIncrements('Course_InstructorID')->primary(); // Primary key
                 $table->unsignedBigInteger('InstructorID'); // Foreign key column
                 $table->string('CourseID'); // Adds created_at and updated_at columns
+                $table->tinyInteger('Drop')->default(0); // 1 = drop ang course || 0 wa na drop
+
+
                 
 
                 // Foreign key constraints
