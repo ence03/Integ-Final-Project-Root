@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\dashboardTeacher;
+use App\Http\Controllers\dashboardStudent;
 
 Route::get('/', function () {
     return view('login');
