@@ -95,10 +95,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 100px 10px 0px;
+            padding: 0px 20px 10px 0px;
             border-bottom: 1px solid #ccc;
         }
-
         .top-bar ion-icon {
             font-size: 24px;
             cursor: pointer;
@@ -216,12 +215,12 @@
         }
 
         .add-course {
-            background-color: #28a745;
+            background-color: #FEC619;
             color: #fff;
         }
 
         .add-course:hover {
-            background-color: #218838;
+            background-color: #FFA300;
         }
 
 
@@ -362,12 +361,12 @@
     </div>
     <div class="content-container">
         <div class="top-bar">
-            <ion-icon name="menu-outline" id="burger-menu" style="color: #000;"></ion-icon>
+            <ion-icon name="menu" id="burger-menu" style="color: #000;"></ion-icon>
             <div class="logo-container">
                 <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
             </div>
             <div class="dropdown">
-                <ion-icon name="person-circle-outline" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
+                <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
                     <a href="#">Logout</a>
@@ -375,7 +374,7 @@
             </div>
         </div>
 
-        <div class="main-content" id="main-content">
+        <div id="main-content">
             <div class="course-management-container">
                 <h1>Course Management</h1>
                 <table>
