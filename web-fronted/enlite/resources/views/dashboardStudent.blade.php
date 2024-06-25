@@ -295,8 +295,9 @@
             <li class="active"><a href="">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
+            <li><a href="#">Grades</a></li>
             <li class="dropdown">
-                <a href="#">Course & Student Management</a>
+                <a href="#">Course Management</a>
                 <div class="dropdown-content">
                     <a href="#">Course Portal</a>
                     <a href="#">Course Management</a>
