@@ -8,8 +8,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
     <style>
         body {
             margin: 0;
@@ -26,13 +24,14 @@
             display: flex;
             align-items: center;
             width: 80%;
-            max-width: 1200px;
+            max-width: 800px;
             justify-content: space-between;
         }
 
         .login-logo {
             flex: 1;
             text-align: center;
+            cursor: pointer;
         }
 
         .login-logo img {
@@ -41,31 +40,40 @@
 
         .login-form {
             flex: 1;
-            color: #000;
+            color: #fff;
             display: flex;
             flex-direction: column;
             margin-top: 50px;
             margin-left: 70px;
             align-items: flex-start;
-            background-color: transparent;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-form label {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 5px;
         }
 
         .login-form input {
-            width: 360px;
-            padding: 20px;
-            margin-bottom: 20px;
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 10px;
             border: none;
             border-radius: 4px;
             background-color: #e0dede;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .login-form button {
-            width: 400px;
-            padding: 20px;
+            width: 100%;
+            padding: 15px;
             background-color: #007BFF;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             color: #fff;
             font-size: 18px;
             cursor: pointer;
@@ -80,32 +88,33 @@
             position: relative;
             display: flex;
             align-items: center;
-            width: 400px;
+            width: 100%;
         }
 
         .login-form .password-toggle input {
             flex-grow: 1;
         }
 
-
-        .login-form label {
-            font-size: 18px;
-        }
-
         .login-form .remember-me {
             display: flex;
-            color: #fff;
-            margin-top: 25px;
-            
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .login-form .remember-me input {
+            width: auto;
             margin-right: 5px;
         }
 
-        .login-form .remember-me label{
-            display: inline-block;
-            max-width: 100%;
+        .login-form .remember-me label {
+            margin-left: 5px;
+        }
+
+        .login-form .remember-me a {
+            color: #fff;
+            margin-left: 20px;
+            margin-bottom: 5px;
         }
 
     </style>
@@ -118,18 +127,18 @@
         <div class="login-form">
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <input type="text" name="username" placeholder="Username" required>
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email Address" required>
+                <label for="password">Password</label>
                 <div class="password-toggle">
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <button type="submit">LOGIN</button>
                 <div class="remember-me">
                     <input type="checkbox" name="remember" id="remember">
                     <label for="remember">Remember me</label>
+                    <a href="#">Forgot your password?</a>
                 </div>
-                <div class="div">
-                    
-                </div>
+                <button type="submit">LOGIN</button>
             </form>
         </div>
     </div>
