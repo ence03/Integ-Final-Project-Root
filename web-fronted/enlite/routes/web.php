@@ -15,7 +15,7 @@ Route::get('/welcome', function () {
 
 
 Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
-
+Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
