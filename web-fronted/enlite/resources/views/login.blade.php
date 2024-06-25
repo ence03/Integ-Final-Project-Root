@@ -12,7 +12,7 @@
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #0A2656;
+            background-color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -36,6 +36,8 @@
 
         .login-logo img {
             max-width: 100%;
+            height: 100%;
+            width: 100%;
         }
 
         .login-form {
@@ -46,7 +48,7 @@
             margin-top: 50px;
             margin-left: 70px;
             align-items: flex-start;
-            background: rgba(255, 255, 255, 0.2);
+            background: #0A2656;
             padding: 50px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
@@ -69,15 +71,16 @@
         }
 
         .login-form button {
-            width: 100%;
+            width: 250px;
             padding: 15px;
-            background-color: #007BFF;
+            background-color: #FFC619;
             border: none;
             border-radius: 8px;
-            color: #fff;
+            color: #000;
             font-size: 18px;
             cursor: pointer;
             margin-top: 20px;
+            margin-left: 2.1rem;
         }
 
         .login-form button:hover {
