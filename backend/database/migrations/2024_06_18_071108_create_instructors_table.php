@@ -20,6 +20,7 @@ return new class extends Migration
                 $table->string('LastName', 50);
                 $table->string('Email', 255); // Set to 255 to accommodate longer emails
                 $table->string('Address', 255); // Increased length to accommodate longer addresses
+                $table->dateTime('updated_at')->nullable()->default(null);
                 
 
                 // Foreign key constraints

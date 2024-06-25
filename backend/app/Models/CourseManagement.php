@@ -30,4 +30,10 @@ class CourseManagement extends Model
         'Description',
         'Credits',
     ];
+
+    public function instructors()
+    {
+        return $this->belongsToMany(Instructor::class, 'course_instructor', 'CourseID', 'InstructorID')
+                    ->wherePivot('Drop', 0);
+    }
 }

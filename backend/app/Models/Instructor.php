@@ -40,4 +40,10 @@ class Instructor extends Model
     {
         return $this->belongsTo(User::class, 'UserID', 'UserID');
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(CourseManagement::class, 'course_instructor', 'InstructorID', 'CourseID')
+                    ->wherePivot('Drop', 0);
+    }
 }
