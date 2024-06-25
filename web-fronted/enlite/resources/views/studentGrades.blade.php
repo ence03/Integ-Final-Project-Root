@@ -78,16 +78,6 @@
             color: #000;
         }
 
-        .main-content {
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            width: 100%;
-            margin-top: 7rem;
-            margin-left: 2rem;
-        }
-
-
         .top-bar {
             height: 50px;
             background-color: #8ECAE6;
@@ -154,82 +144,6 @@
             display: block;
         }
 
-        .dashboard {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            gap: 20px;
-            left: 85px;
-            top: 179px;
-            margin-top: rem;
-            margin-left: 4rem;
-        }
-
-        .dashboard-p {
-            position: flex;
-            width: 221px;
-            height: 55px;
-            left: 63px;
-            top: 102px;
-            font-family: 'Unna';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 30px;
-            line-height: 35px;
-            color: #000000;
-            margin-left: 2rem;
-        }
-
-        .card {
-            box-sizing: border-box;
-            width: 410px;
-            height: 410px;
-            background: rgba(116, 175, 245, 0.29);
-            border: 0.1px solid #B3B1B1;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card ion-icon {
-            font-size: 143px;
-            margin-bottom: 10px;
-        }
-
-
-        .card p {
-            margin: 0;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .card.profile {
-            background-color: #024089;
-        }
-
-        .card.notification {
-            background-color: #FFA300;
-        }
-
-        .card.grades {
-            background-color: #024089;
-        }
-
-        .card.course-management {
-            
-            background-color: #FFC619;
-        }
-
-        .card:hover {
-            background-color: rgba(116, 175, 245, 0.5);
-            color: #000;
-        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -238,14 +152,6 @@
 
             .sidebar.active {
                 transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .main-content.shifted {
-                margin-left: 200px;
             }
 
             .top-bar .logo {
@@ -292,10 +198,10 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="">Dashboard</a></li>
+            <li><a href="">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li><a href="#">Grades</a></li>
+            <li ><a href="#">Grades</a></li>
             <li class="dropdown">
                 <a href="#">Course Management</a>
                 <div class="dropdown-content">
