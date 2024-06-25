@@ -52,7 +52,7 @@
         }
 
         .sidebar ul li.active {
-            background-color: #001B50;
+            background-color: #FEC619;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
@@ -69,7 +69,7 @@
         }
 
         .sidebar ul li:hover {
-            background-color: #001B50;
+            background-color: #FEC619;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
@@ -91,7 +91,7 @@
 
         .top-bar {
             height: 50px;
-            background-color: #001B50;
+            background-color: #8ECAE6;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -136,17 +136,20 @@
         }
 
         .dropdown-content a {
-    color: #333 !important; /* Ensure the default text color is set */
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
+            color: #333 !important;
+            /* Ensure the default text color is set */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
 
-.dropdown-content a:hover {
-    background-color: #f9f9f9; /* Ensure the hover background color is set */
-    color: #000 !important; /* Ensure the hover text color is set */
-}
+        .dropdown-content a:hover {
+            background-color: #FEC619;
+            /* Dark blue for hover */
+            color: #fff;
+            /* White text color on hover */
+        }
 
 
         .dropdown:hover .dropdown-content {
@@ -264,19 +267,18 @@
             }
 
             .sidebar ul .dropdown-content a {
-                color: #000;
+                color: #333;
+                /* Normal state color */
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-                background-color: #fff;
-                transition: background-color 0.3s ease, color 0.3s ease;
-
+                text-align: left;
             }
 
             .sidebar ul .dropdown-content a:hover {
-                background-color: #001B50;
+                background-color: #FEC619;
                 color: #fff;
-            
+
             }
 
         }
