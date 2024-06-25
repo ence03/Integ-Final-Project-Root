@@ -111,7 +111,7 @@
         }
 
         .top-bar .logo {
-            height:70px;
+            height: 70px;
             max-height: 100%;
             margin-left: 10px;
             width: auto;
@@ -155,10 +155,11 @@
 
         .course-management-container {
             margin: 20px;
-            padding: 20px;
+            padding: 10px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 110rem;
         }
 
         .course-management-container h1 {
@@ -189,7 +190,7 @@
 
         .buttons {
             margin-top: 20px;
-            margin-left: 100rem;
+            margin-left: 95rem;
         }
 
         button {
@@ -206,8 +207,21 @@
             background-color: #dc3545;
         }
 
+        button.hidden {
+            display: none;
+        }
+
         button:hover {
             opacity: 0.9;
+        }
+
+        .add-course {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .add-course:hover {
+            background-color: #218838;
         }
 
 
@@ -285,6 +299,7 @@
 
             .main-content.shifted {
                 margin-left: 200px;
+
             }
 
             .top-bar .logo {
@@ -336,8 +351,8 @@
             <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li class="dropdown {{ request()->routeIs('', 'courses.index') ? 'active' : '' }}">
-                <a href="#">Course & Student Management</a>
+            <li class="dropdown">
+                <a href="#">Course Portal & Student Management</a>
                 <div class="dropdown-content">
                     <a href="#">Course Portal</a>
                     <a href="#">Course Management</a>
@@ -346,7 +361,7 @@
         </ul>
     </div>
     <div class="content-container">
-    <div class="top-bar">
+        <div class="top-bar">
             <ion-icon name="menu-outline" id="burger-menu" style="color: #000;"></ion-icon>
             <div class="logo-container">
                 <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
@@ -372,33 +387,33 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox"></td>
                             <td>Networking 1</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox"></td>
                             <td>Application Development and Emerging Technology</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox"></td>
                             <td>Integrative Programming and Technologies</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox"></td>
                             <td>Quantitative Methods</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox"></td>
                             <td>Foreign Language</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox"></td>
                             <td>IT Elective 2</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="buttons">
-                    <button class="drop">Drop</button>
+                    <button class="drop hidden">Drop</button>
                     <button class="add-course">Add Course</button>
                 </div>
             </div>
@@ -415,7 +430,6 @@
             document.getElementById('user-dropdown').classList.toggle('show');
         });
 
-        // Close the dropdown if the user clicks outside of it
         window.onclick = function (event) {
             if (!event.target.matches('#user-menu')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -427,6 +441,20 @@
                 }
             }
         }
+
+        const checkboxes = document.querySelectorAll('.course-checkbox');
+        const dropButton = document.querySelector('.drop');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+                if (anyChecked) {
+                    dropButton.classList.remove('hidden');
+                } else {
+                    dropButton.classList.add('hidden');
+                }
+            });
+        });
     </script>
 </body>
 
