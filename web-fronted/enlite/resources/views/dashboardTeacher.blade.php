@@ -224,6 +224,7 @@
 
         .card:hover {
             background-color: rgba(116, 175, 245, 0.5);
+            color: #000;
         }
 
         @media (max-width: 768px) {
@@ -317,7 +318,7 @@
 
         <div class="main-content" id="main-content">
             <p class="dashboard-p">Dashboard</p>
-            <div class="dashboard">
+            <div class="dashboard" style="color: #fff;" >
                 <div class="card profile">
                     <ion-icon name="person-outline"></ion-icon>
                     <p>PROFILE</p>
