@@ -183,6 +183,13 @@
             font-weight: bold;
         }
 
+        .print-button-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 10px 0;
+        }
+
         .print-button {
             padding: 10px 20px;
             background-color: #FEC619;
@@ -192,6 +199,7 @@
             font-size: 16px;
             cursor: pointer;
         }
+
 
         .print-button:hover {
             background-color: #ffd700;
@@ -251,7 +259,7 @@
             <li><a href="">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li ><a href="#">Grades</a></li>
+            <li class="active"><a href="#">Grades</a></li>
             <li class="dropdown">
                 <a href="#">Course Management</a>
                 <div class="dropdown-content">
@@ -292,54 +300,56 @@
                     <tr>
                         <td>1</td>
                         <td>IT333</td>
-                        <td>Networking 1</td>
+                        <td>Integrative Programming and Technologies</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>IT333</td>
-                        <td>Networking 1</td>
+                        <td>Applications Development and Emerging Technologies</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>IT333</td>
-                        <td>Networking 1</td>
+                        <td>Quantitative Methods</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>IT333</td>
-                        <td>Networking 1</td>
+                        <td>IT Elective 2</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>IT333</td>
-                        <td>Networking 1</td>
+                        <td>Philippine Indigenous Communities and Peace Education</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>IT333</td>
-                        <td>Networking 1</td>
+                        <td>Foreign Language</td>
                         <td>1</td>
                         <td>1</td>
-                        <td>1</td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
-            <button class="print-button">Print Grades</button>
+            <div class="print-button-container">
+                <button class="print-button">Print Grades</button>
+            </div>
         </div>
 
     </div>
