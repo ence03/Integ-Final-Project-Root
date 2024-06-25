@@ -58,7 +58,7 @@
         }
 
         .sidebar ul li.active a {
-            color: #fff;
+            color: #000;
             font-weight: bold;
         }
 
@@ -75,7 +75,7 @@
         }
 
         .sidebar ul li:hover a {
-            color: #fff;
+            color: #000;
         }
 
         .main-content {
@@ -147,7 +147,7 @@
         .dropdown-content a:hover {
             background-color: #FEC619;
             /* Dark blue for hover */
-            color: #fff;
+            color: #000;
             /* White text color on hover */
         }
 
@@ -210,16 +210,16 @@
         }
 
         .card.profile {
-            background-color: rgba(116, 175, 245, 0.29);
+            background-color: #024089;
         }
 
         .card.notification {
-            background-color: rgba(116, 175, 245, 0.29);
+            background-color: #FFA300;
         }
 
         .card.course-management {
             position: relative;
-            background-color: rgba(116, 175, 245, 0.29);
+            background-color: #024089;
         }
 
         .card:hover {
