@@ -111,7 +111,7 @@
         }
 
         .top-bar .logo {
-            height: 30px;
+            height: 70px;
             max-height: 100%;
             margin-left: 10px;
             width: auto;
