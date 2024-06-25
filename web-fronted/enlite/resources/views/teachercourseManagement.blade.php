@@ -52,13 +52,13 @@
         }
 
         .sidebar ul li.active {
-            background-color: #FEC619;
+            background-color: #001B50;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
 
         .sidebar ul li.active a {
-            color: #000;
+            color: #fff;
             font-weight: bold;
         }
 
@@ -75,7 +75,7 @@
         }
 
         .sidebar ul li:hover a {
-            color: #000;
+            color: #fff;
         }
 
         .main-content {
@@ -111,7 +111,7 @@
         }
 
         .top-bar .logo {
-            height: 70px;
+            height:70px;
             max-height: 100%;
             margin-left: 10px;
             width: auto;
@@ -137,7 +137,6 @@
 
         .dropdown-content a {
             color: #333 !important;
-            /* Ensure the default text color is set */
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -146,7 +145,7 @@
 
         .dropdown-content a:hover {
             background-color: #FEC619;
-            color: #000;
+            color: #000 !important;
         }
 
 
@@ -154,18 +153,65 @@
             display: block;
         }
 
-        .dashboard {
-            display: flex;
-            align-items: center;
+        .course-management-container {
+            margin: 20px;
             padding: 20px;
-            gap: 20px;
-            left: 85px;
-            top: 179px;
-            margin-top: rem;
-            margin-left: 4rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .dashboard-p {
+        .course-management-container h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            margin-left: 100rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            color: #fff;
+            background-color: #007BFF;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.drop {
+            background-color: #dc3545;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+
+        .course-management-p {
             position: flex;
             width: 221px;
             height: 55px;
@@ -208,21 +254,20 @@
         }
 
         .card.profile {
-            background-color: #024089;
+            background-color: rgba(116, 175, 245, 0.29);
         }
 
         .card.notification {
-            background-color: #FFA300;
+            background-color: rgba(116, 175, 245, 0.29);
         }
 
         .card.course-management {
             position: relative;
-            background-color: #024089;
+            background-color: rgba(116, 175, 245, 0.29);
         }
 
         .card:hover {
             background-color: rgba(116, 175, 245, 0.5);
-            color: #000;
         }
 
         @media (max-width: 768px) {
@@ -266,16 +311,17 @@
             }
 
             .sidebar ul .dropdown-content a {
-                color: #333;
-                /* Normal state color */
+                color: #000;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-                text-align: left;
+                background-color: #fff;
+                transition: background-color 0.3s ease, color 0.3s ease;
+
             }
 
             .sidebar ul .dropdown-content a:hover {
-                background-color: #FEC619;
+                background-color: #001B50;
                 color: #fff;
 
             }
@@ -287,10 +333,10 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="{{ route('welcome') }}">Dashboard</a></li>
+            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li class="dropdown">
+            <li class="dropdown {{ request()->routeIs('', 'courses.index') ? 'active' : '' }}">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
                     <a href="#">Course Portal</a>
@@ -300,7 +346,7 @@
         </ul>
     </div>
     <div class="content-container">
-        <div class="top-bar">
+    <div class="top-bar">
             <ion-icon name="menu-outline" id="burger-menu" style="color: #000;"></ion-icon>
             <div class="logo-container">
                 <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
@@ -315,19 +361,45 @@
         </div>
 
         <div class="main-content" id="main-content">
-            <p class="dashboard-p">Dashboard</p>
-            <div class="dashboard" style="color: #fff;" >
-                <div class="card profile">
-                    <ion-icon name="person-outline"></ion-icon>
-                    <p>PROFILE</p>
-                </div>
-                <div class="card notification">
-                    <ion-icon name="notifications-outline"></ion-icon>
-                    <p>NOTIFICATION</p>
-                </div>
-                <div class="card course-management">
-                    <ion-icon name="school-outline"></ion-icon>
-                    <p>COURSE & STUDENT MANAGEMENT</p>
+            <div class="course-management-container">
+                <h1>Course Management</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Course Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Networking 1</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Application Development and Emerging Technology</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Integrative Programming and Technologies</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Quantitative Methods</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Foreign Language</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>IT Elective 2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <button class="drop">Drop</button>
+                    <button class="add-course">Add Course</button>
                 </div>
             </div>
         </div>
