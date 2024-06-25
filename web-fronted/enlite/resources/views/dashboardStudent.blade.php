@@ -52,13 +52,13 @@
         }
 
         .sidebar ul li.active {
-            background-color: #001B50;
+            background-color: #FEC619;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
 
         .sidebar ul li.active a {
-            color: #fff;
+            color: #000;
             font-weight: bold;
         }
 
@@ -69,40 +69,41 @@
         }
 
         .sidebar ul li:hover {
-            background-color: #001B50;
+            background-color: #FEC619;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
 
         .sidebar ul li:hover a {
-            color: #fff;
+            color: #000;
         }
 
         .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            transition: margin-left 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            margin-top: 7rem;
+            margin-left: 2rem;
         }
 
-        .main-content.shifted {
-            margin-left: 200px;
-        }
 
         .top-bar {
             height: 50px;
-            background-color: #001B50;
+            background-color: #8ECAE6;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 100px 10px 0px;
+            padding: 0px 20px 10px 0px;
             border-bottom: 1px solid #ccc;
         }
 
         .top-bar ion-icon {
-            font-size: 24px;
+            font-size: 40px;
             cursor: pointer;
+            margin-top: 10px;
         }
+
 
         .top-bar .logo-container {
             display: flex;
@@ -136,17 +137,17 @@
         }
 
         .dropdown-content a {
-    color: #333 !important; /* Ensure the default text color is set */
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
+            color: #333 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
 
-.dropdown-content a:hover {
-    background-color: #f9f9f9; /* Ensure the hover background color is set */
-    color: #000 !important; /* Ensure the hover text color is set */
-}
+        .dropdown-content a:hover {
+            background-color: #FEC619;
+            color: #000;
+        }
 
 
         .dropdown:hover .dropdown-content {
@@ -181,23 +182,25 @@
 
         .card {
             box-sizing: border-box;
-            width: 170px;
-            height: 180px;
+            width: 410px;
+            height: 410px;
             background: rgba(116, 175, 245, 0.29);
             border: 0.1px solid #B3B1B1;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s ease;
+            cursor: pointer;
         }
 
         .card ion-icon {
-            font-size: 50px;
+            font-size: 143px;
             margin-bottom: 10px;
         }
+
 
         .card p {
             margin: 0;
@@ -207,20 +210,25 @@
         }
 
         .card.profile {
-            background-color: rgba(116, 175, 245, 0.29);
+            background-color: #024089;
         }
 
         .card.notification {
-            background-color: rgba(116, 175, 245, 0.29);
+            background-color: #FFA300;
+        }
+
+        .card.grades {
+            background-color: #024089;
         }
 
         .card.course-management {
-            position: relative;
-            background-color: rgba(116, 175, 245, 0.29);
+            
+            background-color: #FFC619;
         }
 
         .card:hover {
             background-color: rgba(116, 175, 245, 0.5);
+            color: #000;
         }
 
         @media (max-width: 768px) {
@@ -264,19 +272,17 @@
             }
 
             .sidebar ul .dropdown-content a {
-                color: #000;
+                color: #333;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-                background-color: #fff;
-                transition: background-color 0.3s ease, color 0.3s ease;
-
+                text-align: left;
             }
 
             .sidebar ul .dropdown-content a:hover {
-                background-color: #001B50;
+                background-color: #FEC619;
                 color: #fff;
-            
+
             }
 
         }
@@ -286,7 +292,7 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="{{ route('welcome') }}">Dashboard</a></li>
+            <li class="active"><a href="">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
             <li class="dropdown">
@@ -300,12 +306,12 @@
     </div>
     <div class="content-container">
         <div class="top-bar">
-            <ion-icon name="menu-outline" id="burger-menu" style="color: #fff;"></ion-icon>
+            <ion-icon name="menu-outline" id="burger-menu" style="color: #000;"></ion-icon>
             <div class="logo-container">
                 <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
             </div>
             <div class="dropdown">
-                <ion-icon name="person-circle-outline" id="user-menu" style="color: #fff; margin-left:5rem;"></ion-icon>
+                <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
                     <a href="#">Logout</a>
@@ -315,17 +321,21 @@
 
         <div class="main-content" id="main-content">
             <p class="dashboard-p">Dashboard</p>
-            <div class="dashboard">
+            <div class="dashboard" style="color: #fff;" >
                 <div class="card profile">
-                    <ion-icon name="person-outline"></ion-icon>
+                    <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
                 </div>
                 <div class="card notification">
-                    <ion-icon name="notifications-outline"></ion-icon>
+                    <ion-icon name="notifications"></ion-icon>
                     <p>NOTIFICATION</p>
                 </div>
+                <div class="card grades">
+                    <ion-icon name="star"></ion-icon>
+                    <p>GRADES</p>
+                </div>
                 <div class="card course-management">
-                    <ion-icon name="school-outline"></ion-icon>
+                    <ion-icon name="reader"></ion-icon>
                     <p>COURSE & STUDENT MANAGEMENT</p>
                 </div>
             </div>
@@ -342,7 +352,6 @@
             document.getElementById('user-dropdown').classList.toggle('show');
         });
 
-        // Close the dropdown if the user clicks outside of it
         window.onclick = function (event) {
             if (!event.target.matches('#user-menu')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
