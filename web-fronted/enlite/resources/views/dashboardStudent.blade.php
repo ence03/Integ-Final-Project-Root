@@ -9,7 +9,8 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
+            height: 100%;
+            width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -78,16 +79,6 @@
             color: #000;
         }
 
-        .main-content {
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            width: 100%;
-            margin-top: 7rem;
-            margin-left: 2rem;
-        }
-
-
         .top-bar {
             height: 50px;
             background-color: #8ECAE6;
@@ -153,16 +144,22 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        
+
+        .main-content {
+            align-items: center;
+            justify-content: center;
+            margin-top: 7rem;
+            margin-left: 2rem;
+        }
 
         .dashboard {
             display: flex;
             align-items: center;
             padding: 20px;
-            gap: 20px;
+            gap: 25px;
             left: 85px;
-            top: 179px;
-            margin-top: rem;
-            margin-left: 4rem;
+            margin-left: 3rem;
         }
 
         .dashboard-p {
@@ -240,14 +237,6 @@
                 transform: translateX(0);
             }
 
-            .main-content {
-                margin-left: 0;
-            }
-
-            .main-content.shifted {
-                margin-left: 200px;
-            }
-
             .top-bar .logo {
                 height: 30px;
             }
@@ -282,9 +271,7 @@
             .sidebar ul .dropdown-content a:hover {
                 background-color: #FEC619;
                 color: #fff;
-
             }
-
         }
     </style>
 </head>
@@ -292,10 +279,10 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="">Dashboard</a></li>
+            <li><a href="">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li><a href="#">Grades</a></li>
+            <li ><a href="#">Grades</a></li>
             <li class="dropdown">
                 <a href="#">Course Management</a>
                 <div class="dropdown-content">
@@ -319,7 +306,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="main-content" id="main-content">
             <p class="dashboard-p">Dashboard</p>
             <div class="dashboard" style="color: #fff;" >
@@ -341,6 +328,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
