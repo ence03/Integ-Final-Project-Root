@@ -9,7 +9,8 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
+            height: 100%;
+            width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -143,7 +144,58 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
 
+        .main-content {
+            width: 100%;
+            max-width: 1600px;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .print-button {
+            padding: 10px 20px;
+            background-color: #FEC619;
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .print-button:hover {
+            background-color: #ffd700;
+        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -188,9 +240,7 @@
             .sidebar ul .dropdown-content a:hover {
                 background-color: #FEC619;
                 color: #fff;
-
             }
-
         }
     </style>
 </head>
@@ -225,7 +275,72 @@
                 </div>
             </div>
         </div>
-
+        <div class="main-content" id="main-content">
+            <h2>Grades</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Code</th>
+                        <th>Descriptive</th>
+                        <th>Midterm</th>
+                        <th>Final</th>
+                        <th>Re-Exam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>IT333</td>
+                        <td>Networking 1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>IT333</td>
+                        <td>Networking 1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>IT333</td>
+                        <td>Networking 1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>IT333</td>
+                        <td>Networking 1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>IT333</td>
+                        <td>Networking 1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>IT333</td>
+                        <td>Networking 1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="print-button">Print Grades</button>
+        </div>
 
     </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
