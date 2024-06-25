@@ -311,6 +311,24 @@
             display: block;
         }
 
+        .notification {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff6961;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1002;
+        }
+
+        .notification.active {
+            display: block;
+        }
+
         .search-container {
             display: flex;
             align-items: center;
@@ -469,6 +487,7 @@
             <button id="submit-button">Submit</button>
         </div>
     </div>
+    <div class="notification" id="notification">Student already enrolled</div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
         document.getElementById('burger-menu').addEventListener('click', function () {
@@ -514,6 +533,7 @@
         const uploadCsvButton = document.getElementById('upload-csv-button');
         const manualInputForm = document.getElementById('manual-input-form');
         const popupButtons = document.getElementById('popup-buttons');
+        const notification = document.getElementById('notification');
 
         addStudentButton.addEventListener('click', function () {
             popup.classList.add('active');
@@ -521,10 +541,7 @@
         });
 
         popupClose.addEventListener('click', function () {
-            popup.classList.remove('active');
-            popupBackground.classList.remove('active');
-            manualInputForm.classList.remove('active');
-            popupButtons.style.display = 'flex';
+            closePopup();
         });
 
         formClose.addEventListener('click', function () {
@@ -533,10 +550,7 @@
         });
 
         popupBackground.addEventListener('click', function () {
-            popup.classList.remove('active');
-            popupBackground.classList.remove('active');
-            manualInputForm.classList.remove('active');
-            popupButtons.style.display = 'flex';
+            closePopup();
         });
 
         manualInputButton.addEventListener('click', function () {
@@ -574,10 +588,7 @@
             document.getElementById('student-middlename').value = '';
 
             // Close the popup after submission
-            popup.classList.remove('active');
-            popupBackground.classList.remove('active');
-            manualInputForm.classList.remove('active');
-            popupButtons.style.display = 'flex';
+            closePopup();
         });
 
         // Drop button functionality
@@ -604,12 +615,22 @@
             const reader = new FileReader();
             reader.onload = function (event) {
                 const lines = event.target.result.split('\n');
+                let duplicates = false;
                 lines.forEach(line => {
                     const [id, lastName, firstName, middleName] = line.split(',');
                     if (id && lastName && firstName && middleName) {
-                        addStudentToTable(id, lastName, firstName, middleName);
+                        const exists = checkStudentExists(id);
+                        if (exists) {
+                            duplicates = true;
+                        } else {
+                            addStudentToTable(id, lastName, firstName, middleName);
+                        }
                     }
                 });
+                if (duplicates) {
+                    showNotification();
+                }
+                closePopup();
             };
             reader.readAsText(file);
         }
@@ -630,6 +651,31 @@
                 const anyChecked = Array.from(document.querySelectorAll('.student-checkbox')).some(checkbox => checkbox.checked);
                 dropButton.style.display = anyChecked ? 'block' : 'none';
             });
+        }
+
+        function checkStudentExists(id) {
+            const rows = document.querySelectorAll('#student-table-body tr');
+            for (let row of rows) {
+                const cells = row.querySelectorAll('td');
+                if (cells[1].textContent === id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function closePopup() {
+            popup.classList.remove('active');
+            popupBackground.classList.remove('active');
+            manualInputForm.classList.remove('active');
+            popupButtons.style.display = 'flex';
+        }
+
+        function showNotification() {
+            notification.classList.add('active');
+            setTimeout(() => {
+                notification.classList.remove('active');
+            }, 3000);
         }
     </script>
 </body>
