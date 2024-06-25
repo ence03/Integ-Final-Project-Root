@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.css">
     <title>Dashboard</title>
     <style>
         body {
@@ -95,7 +95,6 @@
             margin-top: 10px;
         }
 
-
         .top-bar .logo-container {
             display: flex;
             align-items: center;
@@ -140,15 +139,14 @@
             color: #000;
         }
 
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
         .content-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            
         }
 
         .main-content {
@@ -169,11 +167,14 @@
             margin-bottom: 20px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #dee2e6;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
         }
@@ -199,7 +200,6 @@
             font-size: 16px;
             cursor: pointer;
         }
-
 
         .print-button:hover {
             background-color: #ffd700;
@@ -285,7 +285,7 @@
         </div>
         <div class="main-content" id="main-content">
             <h2>Grades</h2>
-            <table>
+            <table id="grades-table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -348,7 +348,7 @@
                 </tbody>
             </table>
             <div class="print-button-container">
-                <button class="print-button">Print Grades</button>
+                <button class="print-button" onclick="downloadCSV()">Print Grades</button>
             </div>
         </div>
 
@@ -374,6 +374,28 @@
                     }
                 }
             }
+        }
+
+        function downloadCSV() {
+            const table = document.getElementById('grades-table');
+            let csv = [];
+            for (let row of table.rows) {
+                let cols = [];
+                for (let cell of row.cells) {
+                    cols.push(cell.innerText);
+                }
+                csv.push(cols.join(','));
+            }
+            const csvContent = csv.join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'grades.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
     </script>
 </body>
