@@ -180,7 +180,8 @@
             margin-bottom: 1rem;
         }
 
-        table th, table td {
+        table th,
+        table td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
@@ -211,10 +212,9 @@
         .drop {
             background-color: #dc3545;
             color: #fff;
-            display: none; /* Initially hide the drop button */
+            display: none;
         }
 
-        /* Popup styles */
         .popup {
             display: none;
             position: fixed;
@@ -333,7 +333,7 @@
             display: flex;
             align-items: center;
             margin-left: auto;
-            margin-right: 2rem;
+            margin-right: 4rem;
             background-color: #f2f2f2;
             padding: 5px 10px;
             border-radius: 20px;
@@ -490,17 +490,17 @@
     <div class="notification" id="notification">Student already enrolled</div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        document.getElementById('burger-menu').addEventListener('click', function () {
+        document.getElementById('burger-menu').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('main-content').classList.toggle('shifted');
         });
 
-        document.getElementById('user-menu').addEventListener('click', function () {
+        document.getElementById('user-menu').addEventListener('click', function() {
             document.getElementById('user-dropdown').classList.toggle('show');
         });
 
         // Close the dropdown if the user clicks outside of it
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (!event.target.matches('#user-menu')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 for (var i = 0; i < dropdowns.length; i++) {
@@ -517,7 +517,7 @@
         const dropButton = document.getElementById('drop-button');
 
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function () {
+            checkbox.addEventListener('change', function() {
                 const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
                 dropButton.style.display = anyChecked ? 'block' : 'none';
             });
@@ -535,35 +535,35 @@
         const popupButtons = document.getElementById('popup-buttons');
         const notification = document.getElementById('notification');
 
-        addStudentButton.addEventListener('click', function () {
+        addStudentButton.addEventListener('click', function() {
             popup.classList.add('active');
             popupBackground.classList.add('active');
         });
 
-        popupClose.addEventListener('click', function () {
+        popupClose.addEventListener('click', function() {
             closePopup();
         });
 
-        formClose.addEventListener('click', function () {
+        formClose.addEventListener('click', function() {
             manualInputForm.classList.remove('active');
             popupButtons.style.display = 'flex';
         });
 
-        popupBackground.addEventListener('click', function () {
+        popupBackground.addEventListener('click', function() {
             closePopup();
         });
 
-        manualInputButton.addEventListener('click', function () {
+        manualInputButton.addEventListener('click', function() {
             manualInputForm.classList.add('active');
             popupButtons.style.display = 'none';
         });
 
-        uploadCsvButton.addEventListener('click', function () {
+        uploadCsvButton.addEventListener('click', function() {
             // Trigger file input for uploading CSV
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
             fileInput.accept = '.csv';
-            fileInput.addEventListener('change', function (event) {
+            fileInput.addEventListener('change', function(event) {
                 const file = event.target.files[0];
                 if (file) {
                     handleCsvUpload(file);
@@ -572,14 +572,19 @@
             fileInput.click();
         });
 
-        document.getElementById('submit-button').addEventListener('click', function () {
+        document.getElementById('submit-button').addEventListener('click', function() {
             const id = document.getElementById('student-id').value;
             const lastName = document.getElementById('student-lastname').value;
             const firstName = document.getElementById('student-firstname').value;
             const middleName = document.getElementById('student-middlename').value;
 
-            // Add new student to the table
-            addStudentToTable(id, lastName, firstName, middleName);
+            const exists = checkStudentExists(id);
+            if (exists) {
+                showNotification();
+            } else {
+                // Add new student to the table
+                addStudentToTable(id, lastName, firstName, middleName);
+            }
 
             // Clear form fields
             document.getElementById('student-id').value = '';
@@ -592,7 +597,7 @@
         });
 
         // Drop button functionality
-        dropButton.addEventListener('click', function () {
+        dropButton.addEventListener('click', function() {
             const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
             checkedBoxes.forEach(checkbox => {
                 checkbox.closest('tr').remove();
@@ -601,7 +606,7 @@
         });
 
         // Search functionality
-        document.getElementById('search-input').addEventListener('input', function () {
+        document.getElementById('search-input').addEventListener('input', function() {
             const filter = this.value.toLowerCase();
             const rows = document.querySelectorAll('#student-table-body tr');
             rows.forEach(row => {
@@ -613,7 +618,7 @@
 
         function handleCsvUpload(file) {
             const reader = new FileReader();
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 const lines = event.target.result.split('\n');
                 let duplicates = false;
                 lines.forEach(line => {
@@ -647,7 +652,7 @@
             document.getElementById('student-table-body').appendChild(newRow);
 
             // Reattach event listener for new checkbox
-            newRow.querySelector('.student-checkbox').addEventListener('change', function () {
+            newRow.querySelector('.student-checkbox').addEventListener('change', function() {
                 const anyChecked = Array.from(document.querySelectorAll('.student-checkbox')).some(checkbox => checkbox.checked);
                 dropButton.style.display = anyChecked ? 'block' : 'none';
             });
