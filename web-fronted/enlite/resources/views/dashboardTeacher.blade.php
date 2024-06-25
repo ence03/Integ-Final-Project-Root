@@ -77,12 +77,13 @@
         .sidebar ul li:hover a {
             color: #000;
         }
-
         .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            transition: margin-left 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100%;
+            margin-top: 7rem;
+            margin-left: 2rem;
         }
 
         .main-content.shifted {
@@ -95,12 +96,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 100px 10px 0px;
+            padding: 0px 20px 10px 0px;
             border-bottom: 1px solid #ccc;
         }
 
         .top-bar ion-icon {
-            font-size: 24px;
+            font-size: 40px;
             cursor: pointer;
         }
 
@@ -161,8 +162,8 @@
             gap: 20px;
             left: 85px;
             top: 179px;
-            margin-top: rem;
-            margin-left: 4rem;
+            margin-top:3rem;
+            margin-left: 18rem;
         }
 
         .dashboard-p {
@@ -170,24 +171,24 @@
             width: 221px;
             height: 55px;
             left: 63px;
-            top: 102px;
             font-family: 'Unna';
             font-style: normal;
             font-weight: 700;
             font-size: 30px;
             line-height: 35px;
             color: #000000;
-            margin-left: 2rem;
+            margin-left: 10rem;
+            margin-top: 7rem;
         }
 
-        .card {
+    .card {
             box-sizing: border-box;
-            width: 170px;
-            height: 180px;
+            width: 410px;
+            height: 410px;
             background: rgba(116, 175, 245, 0.29);
             border: 0.1px solid #B3B1B1;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 5px;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -196,9 +197,10 @@
         }
 
         .card ion-icon {
-            font-size: 50px;
+            font-size: 143px;
             margin-bottom: 10px;
         }
+
 
         .card p {
             margin: 0;
@@ -233,15 +235,6 @@
             .sidebar.active {
                 transform: translateX(0);
             }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .main-content.shifted {
-                margin-left: 200px;
-            }
-
             .top-bar .logo {
                 height: 30px;
             }
@@ -301,12 +294,12 @@
     </div>
     <div class="content-container">
         <div class="top-bar">
-            <ion-icon name="menu-outline" id="burger-menu" style="color: #000;"></ion-icon>
+            <ion-icon name="menu" id="burger-menu" style="color: #000;"></ion-icon>
             <div class="logo-container">
                 <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
             </div>
             <div class="dropdown">
-                <ion-icon name="person-circle-outline" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
+                <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
                     <a href="#">Logout</a>
@@ -314,19 +307,19 @@
             </div>
         </div>
 
-        <div class="main-content" id="main-content">
+        <div id="main-content">
             <p class="dashboard-p">Dashboard</p>
             <div class="dashboard" style="color: #fff;" >
                 <div class="card profile">
-                    <ion-icon name="person-outline"></ion-icon>
+                    <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
                 </div>
                 <div class="card notification">
-                    <ion-icon name="notifications-outline"></ion-icon>
+                    <ion-icon name="notifications"></ion-icon>
                     <p>NOTIFICATION</p>
                 </div>
                 <div class="card course-management">
-                    <ion-icon name="school-outline"></ion-icon>
+                    <ion-icon name="reader"></ion-icon>
                     <p>COURSE & STUDENT MANAGEMENT</p>
                 </div>
             </div>
