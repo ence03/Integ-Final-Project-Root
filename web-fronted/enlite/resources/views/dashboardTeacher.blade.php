@@ -77,6 +77,7 @@
         .sidebar ul li:hover a {
             color: #000;
         }
+
         .main-content {
             align-items: center;
             justify-content: center;
@@ -162,7 +163,7 @@
             gap: 20px;
             left: 85px;
             top: 179px;
-            margin-top:3rem;
+            margin-top: 3rem;
             margin-left: 18rem;
         }
 
@@ -181,7 +182,7 @@
             margin-top: 7rem;
         }
 
-    .card {
+        .card {
             box-sizing: border-box;
             width: 410px;
             height: 410px;
@@ -194,6 +195,7 @@
             align-items: center;
             justify-content: center;
             transition: background-color 0.3s ease;
+            cursor: pointer;
         }
 
         .card ion-icon {
@@ -235,6 +237,7 @@
             .sidebar.active {
                 transform: translateX(0);
             }
+
             .top-bar .logo {
                 height: 30px;
             }
@@ -309,7 +312,7 @@
 
         <div id="main-content">
             <p class="dashboard-p">Dashboard</p>
-            <div class="dashboard" style="color: #fff;" >
+            <div class="dashboard" style="color: #fff;">
                 <div class="card profile">
                     <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
