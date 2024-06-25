@@ -302,7 +302,7 @@
         <div class="top-bar">
             <ion-icon name="menu-outline" id="burger-menu" style="color: #fff;"></ion-icon>
             <div class="logo-container">
-                <img src="{{ asset('img/enlite.png') }}" alt="EnLite" class="logo">
+                <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
             </div>
             <div class="dropdown">
                 <ion-icon name="person-circle-outline" id="user-menu" style="color: #fff; margin-left:5rem;"></ion-icon>
