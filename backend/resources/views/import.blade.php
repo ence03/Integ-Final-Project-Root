@@ -12,15 +12,21 @@
     </form>
 
     @if(session('success'))
-        <p>{{ session('success') }}</p>
+        <div style="color: green;">
+            {!! nl2br(e(session('success'))) !!}
+        </div>
     @endif
 
     @if(session('error'))
-        <p>{{ session('error') }}</p>
+        <div style="color: red;">
+            {{ session('error') }}
+        </div>
     @endif
 
     @if(session('warning'))
-        <p>{!! nl2br(e(session('warning'))) !!}</p>
+        <div style="color: orange;">
+            {!! nl2br(e(session('warning'))) !!}
+        </div>
     @endif
 </body>
 </html>

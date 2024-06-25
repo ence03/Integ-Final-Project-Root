@@ -7,7 +7,7 @@ use App\Models\Enrollment;
 use App\Models\Student; // Import the Student model
 use Illuminate\Support\Facades\DB;
 
-class StudentController extends Controller
+class AdminCSVEnrollment extends Controller
 {
     public function import(Request $request)
     {
@@ -37,9 +37,9 @@ class StudentController extends Controller
                     }
 
                     // Check if the student exists
-                    $studentExists = Student::where('StudentID', $data[1])->exists();
+                    $student = Student::where('StudentID', $data[1])->first();
 
-                    if (!$studentExists) {
+                    if (!$student) {
                         // If student does not exist, prepare a message
                         $missingStudentsMessage .= "StudentID: {$data[1]} does not exist in the students table.\n";
                         continue;
@@ -51,6 +51,10 @@ class StudentController extends Controller
                         'StudentID' => $data[1],
                         'Course_InstructorID' => $data[2],
                     ]);
+
+                    // Update student's enrollment status
+                    $student->EnrollmentStatus = 'Enrolled'; // or any other status you need to set
+                    $student->save();
                 }
                 DB::commit();
             } catch (\Exception $e) {

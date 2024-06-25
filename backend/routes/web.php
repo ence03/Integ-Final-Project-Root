@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AdminCSVEnrollment;
 use App\Http\Controllers\StudentDataController;
 use App\Http\Controllers\AdminEnrollmentController;
 use App\Http\Controllers\CourseInstructor;
@@ -16,7 +16,7 @@ Route::get('/import', function () {
     return view('import');
 })->name('import.view');
 
-Route::post('/import', [StudentController::class, 'import'])->name('import');
+Route::post('/import', [AdminCSVEnrollment::class, 'import'])->name('import');
 
 
 
