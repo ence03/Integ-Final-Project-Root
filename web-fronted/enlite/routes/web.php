@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\dashboardTeacher;
 use App\Http\Controllers\dashboardStudent;
 use App\Http\Controllers\teachercourseManagement;
+use App\Http\Controllers\courseportalteacher;
 
 Route::get('/', function () {
     return view('login');
@@ -19,6 +20,7 @@ Route::get('/welcome', function () {
 Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
 Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
 Route::get('/teachercoursemanagement', [teachercourseManagement::class, 'index'])->name('teachercourseManagement');
+Route::get('/courseportalteacher', [courseportalteacher::class, 'index'])->name('courseportalteacher');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
