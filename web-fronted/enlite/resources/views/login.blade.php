@@ -96,28 +96,6 @@
             flex-grow: 1;
         }
 
-        .login-form .remember-me {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .login-form .remember-me input {
-            width: auto;
-            margin-right: 5px;
-        }
-
-        .login-form .remember-me label {
-            margin-left: 5px;
-        }
-
-        .login-form .remember-me a {
-            color: #fff;
-            margin-left: 20px;
-            margin-bottom: 5px;
-        }
-
     </style>
 </head>
 <body>
@@ -133,11 +111,6 @@
                 <label for="password">Password</label>
                 <div class="password-toggle">
                     <input type="password" name="password" placeholder="Password" required>
-                </div>
-                <div class="remember-me">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember me</label>
-                    <a href="#">Forgot your password?</a>
                 </div>
                 <button type="submit">LOGIN</button>
             </form>

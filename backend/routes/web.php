@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminEnrollmentController;
 use App\Http\Controllers\CourseInstructor;
 use App\Http\Controllers\dashboardStudent;
 use App\Http\Controllers\dashboardTeacher;
-
+use App\Http\Controllers\StudentLoginController;
 
 
 use App\Http\Controllers\AdminCSVUserController;

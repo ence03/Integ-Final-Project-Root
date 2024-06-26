@@ -8,6 +8,8 @@ use App\Http\Controllers\teachercourseManagement;
 use App\Http\Controllers\courseportalteacher;
 use App\Http\Controllers\studentGrades;
 use App\Http\Controllers\studentCoursemanagement;
+use App\Http\Controllers\teacherprofile;
+
 
 Route::get('/', function () {
     return view('login');
@@ -26,10 +28,12 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
 Route::get('/teachercoursemanagement', [teachercourseManagement::class, 'index'])->name('teachercourseManagement');
 Route::get('/courseportalteacher', [courseportalteacher::class, 'index'])->name('courseportalteacher');
+Route::get('/teacherprofile', [teacherprofile::class, 'index'])->name('teacherprofile');
+
+
 
 
 //student side
 Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
 Route::get('/studentgrades', [studentGrades::class, 'index'])->name('studentGrades');
 Route::get('/studentcoursemanagement', [studentCoursemanagement::class, 'index'])->name('studentCoursemanagement');
-
