@@ -125,6 +125,8 @@
             z-index: 1;
             right: 0;
             top: 100%;
+	        border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-content a {
@@ -133,6 +135,7 @@
             text-decoration: none;
             display: block;
             text-align: left;
+	        border-radius: 20px;
         }
 
         .dropdown-content a:hover {
