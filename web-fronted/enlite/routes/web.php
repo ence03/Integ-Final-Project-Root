@@ -11,6 +11,7 @@ use App\Http\Controllers\studentCoursemanagement;
 use App\Http\Controllers\teacherprofile;
 use App\Http\Controllers\studentProfile;
 use App\Http\Controllers\studentNotification;
+use App\Http\Controllers\teachernotification;
 
 
 Route::get('/', function () {

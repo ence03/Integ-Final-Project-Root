@@ -349,8 +349,8 @@
     <div class="sidebar" id="sidebar">
     <ul>
             <li><a href="dashboardteacher">Dashboard</a></li>
-            <li class="active"><a href="teachernotification">Profile</a></li>
-            <li><a href="teacherprofile">Notification</a></li>
+            <li class="active"><a href="teacherprofile">Profile</a></li>
+            <li><a href="teachernotification">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
