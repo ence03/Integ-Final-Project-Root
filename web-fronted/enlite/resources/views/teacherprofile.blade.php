@@ -261,11 +261,11 @@
 </head>
 
 <body>
-    <div class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar">
         <ul>
             <li class="active"><a href="dashboardteacher">Dashboard</a></li>
-            <li><a href="teachernotification">Profile</a></li>
-            <li><a href="teacherprofile">Notification</a></li>
+            <li><a href="teacherprofile">Profile</a></li>
+            <li><a href="teachernotification">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
@@ -284,8 +284,8 @@
             <div class="dropdown">
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="teacherprofile">Profile</a>
+                    <a href="login">Logout</a>
                 </div>
             </div>
         </div>
