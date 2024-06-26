@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   card: {
+    borderRadius: 10,
     width: "40%",
     height: 120,
     justifyContent: "center",
@@ -89,18 +90,18 @@ const styles = StyleSheet.create({
   profileCard: {
     height: 192,
     width: 141,
-    backgroundColor: "#b56576",
+    backgroundColor: "#fda300",
     marginLeft: 20,
   },
   notificationCard: {
     height: 192,
     width: 141,
-    backgroundColor: "#E56b6f",
+    backgroundColor: "#fa841a",
     marginRight: 20,
   },
   courseCard: {
     width: 296,
-    backgroundColor: "#EAAC8B",
+    backgroundColor: "#8acae6",
   },
   cardText: {
     color: "#fff",
