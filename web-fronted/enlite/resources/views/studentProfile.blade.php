@@ -347,7 +347,7 @@
         <ul>
             <li><a href="dashboardstudent">Dashboard</a></li>
             <li class="active"><a href="studentprofile">Profile</a></li>
-            <li><a href="#">Notification</a></li>
+            <li><a href="studentnotification">Notification</a></li>
             <li><a href="studentgrades">Grades</a></li>
             <li><a href="studentcoursemanagement">Course Management</a></li>
         </ul>

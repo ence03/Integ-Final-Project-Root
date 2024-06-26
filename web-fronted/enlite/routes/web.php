@@ -9,7 +9,8 @@ use App\Http\Controllers\courseportalteacher;
 use App\Http\Controllers\studentGrades;
 use App\Http\Controllers\studentCoursemanagement;
 use App\Http\Controllers\teacherprofile;
-use App\Http\Controllers\teachernotification;
+use App\Http\Controllers\studentProfile;
+
 
 Route::get('/', function () {
     return view('login');
@@ -37,3 +38,4 @@ Route::get('/teachernotification', [teachernotification::class, 'index'])->name(
 Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
 Route::get('/studentgrades', [studentGrades::class, 'index'])->name('studentGrades');
 Route::get('/studentcoursemanagement', [studentCoursemanagement::class, 'index'])->name('studentCoursemanagement');
+Route::get('/studentprofile', [studentProfile::class, 'index'])->name('studentProfile');
