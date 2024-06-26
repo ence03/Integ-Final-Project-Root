@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
-    <title>Dashboard</title>
+    <title>Teacher Course Management</title>
     <style>
-          body {
+        body {
             display: flex;
             height: 100%;
             width: 100%;
@@ -159,8 +159,9 @@
         }
 
         .course-management-container {
-            margin: 20px;
             padding: 10px;
+            margin-top: 5rem;
+            margin-left: 4rem;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -361,12 +362,12 @@
 
 <body>
     <div class="sidebar" id="sidebar">
-    <ul>
-            <li><a href="dashboardteacher">Dashboard</a></li>
-            <li><a href="teacherprofile">Profile</a></li>
-            <li><a href="#">Notification</a></li>
+        <ul>
+            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="teachernotification">Profile</a></li>
+            <li><a href="teacherprofile">Notification</a></li>
             <li class="dropdown">
-                <a href="#">Course Portal & Student Management</a>
+                <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
                     <a href="courseportalteacher">Course Portal</a>
                     <a href="teachercoursemanagement">Course Management</a>
@@ -428,7 +429,8 @@
                 </table>
                 <div class="buttons">
                     <button class="drop hidden">Drop</button>
-                    <button class="add-students hidden" onclick="location.href='courseportalteacher'">Add Students</button>
+                    <button class="add-students hidden" onclick="location.href='courseportalteacher'">Add
+                        Students</button>
                     <button class="add-course">Add Course</button>
                 </div>
             </div>
