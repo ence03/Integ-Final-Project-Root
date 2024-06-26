@@ -417,7 +417,7 @@
                             <button class="cancel-btn">Cancel</button>
                         </div>
                     </div>
-                    <div id="change-password-section" style="display: none;">
+                    <div id="change-password-section" style="display: none; margin-bottom: 9.5rem;">
                         <h2>Change Password</h2>
                         <div class="form-group">
                             <label for="current-password">Current Password</label>
