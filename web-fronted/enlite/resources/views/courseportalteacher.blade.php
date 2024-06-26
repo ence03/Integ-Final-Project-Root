@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
     <title>Course Portal</title>
     <style>
-          body {
+        body {
             display: flex;
-            height: 100%;
-            width: 100%;
+            min-height: 100vh;
+            min-width: 100vw;
             margin: 0;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
 
         .sidebar {
@@ -87,6 +88,10 @@
             align-items: center;
             padding: 0px 20px 10px 0px;
             border-bottom: 1px solid #ccc;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999;
         }
 
         .top-bar ion-icon {
@@ -145,11 +150,15 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             transition: margin-left 0.3s ease;
+            min-height: calc(100vh - 50px);
+            padding-top: 50px;
+            overflow: auto;
         }
 
         .main-content.shifted {
@@ -417,9 +426,9 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-        <li class="active"><a href="dashboardteacher">Dashboard</a></li>
-            <li><a href="teachernotification">Profile</a></li>
-            <li><a href="teacherprofile">Notification</a></li>
+            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="teacherprofile">Profile</a></li>
+            <li><a href="teachernotification">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
@@ -438,8 +447,8 @@
             <div class="dropdown">
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="teacherprofile">Profile</a>
+                    <a href="login">Logout</a>
                 </div>
             </div>
         </div>
@@ -495,6 +504,7 @@
     <script>
         document.getElementById('burger-menu').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('main-content').classList.toggle('shifted');
         });
 
         document.getElementById('user-menu').addEventListener('click', function() {
