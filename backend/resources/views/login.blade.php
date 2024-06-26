@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>EnLite Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -16,6 +17,7 @@
             height: 100vh;
             color: #fff;
         }
+
         .container {
             display: flex;
             align-items: center;
@@ -23,16 +25,19 @@
             max-width: 800px;
             justify-content: space-between;
         }
+
         .login-logo {
             flex: 1;
             text-align: center;
             cursor: pointer;
         }
+
         .login-logo img {
             max-width: 100%;
             height: 100%;
             width: 100%;
         }
+
         .login-form {
             flex: 1;
             color: #fff;
@@ -46,11 +51,13 @@
             border-radius: 20px;
             backdrop-filter: blur(10px);
         }
+
         .login-form label {
             color: #fff;
             font-size: 16px;
             margin-bottom: 5px;
         }
+
         .login-form input {
             width: 90%;
             padding: 15px;
@@ -60,6 +67,7 @@
             background-color: #fff;
             font-size: 16px;
         }
+
         .login-form button {
             width: 250px;
             padding: 15px;
@@ -72,36 +80,27 @@
             margin-top: 20px;
             margin-left: 2.1rem;
         }
+
         .login-form button:hover {
             background-color: #0056b3;
         }
+
         .login-form .password-toggle {
             position: relative;
             display: flex;
             align-items: center;
             width: 100%;
         }
+
         .login-form .password-toggle input {
             flex-grow: 1;
         }
-        .login-form .remember-me {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
+
+        .error {
+            color: red;
             margin-bottom: 10px;
         }
-        .login-form .remember-me input {
-            width: auto;
-            margin-right: 5px;
-        }
-        .login-form .remember-me label {
-            margin-left: 5px;
-        }
-        .login-form .remember-me a {
-            color: #fff;
-            margin-left: 20px;
-            margin-bottom: 5px;
-        }
+
     </style>
 </head>
 <body>
@@ -118,11 +117,15 @@
                 <div class="password-toggle">
                     <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <div class="remember-me">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember me</label>
-                    <a href="#">Forgot your password?</a>
-                </div>
+                 @if ($errors->any())
+                    <div class="error">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <button type="submit">LOGIN</button>
             </form>
         </div>
