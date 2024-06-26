@@ -19,11 +19,12 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 
-Route::get('/import', function () {
-    return view('import');
+//admin Import CSV Files For Enrollment
+Route::get('/admin/enrollments/import', function () {
+    return view('admin.enrollments.import');
 })->name('import.view');
 
-Route::post('/import', [AdminCSVEnrollment::class, 'import'])->name('import');
+Route::post('/import', [AdminCSVEnrollment::class, 'import'])->name('import.studentEnrollment');
 
 
 
@@ -57,3 +58,38 @@ Route::get('login', [StudentLoginController::class, 'showLoginForm'])->name('log
 Route::post('login', [StudentLoginController::class, 'login']);
 Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
 Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
+
+
+//Admin User Manual Entry
+Route::get('/admin/createUsers/create', [AdminManualUserController::class, 'create'])->name('admin.createUsers.create');
+Route::post('/admin/createUsers/store', [AdminManualUserController::class, 'store'])->name('admin.createUsers.store');
+
+//admin Import CSV File for User
+Route::get('/admin/create-users', function () {
+    return view('admin.createUsers.UserCSV');
+})->name('createUsers.view');
+
+Route::post('/admin/import-users', [AdminCSVUserController::class, 'import'])->name('import.users');
+
+
+
+
+// Add Student (Admin) Manual Entry
+Route::get('/admin/addStudent/create', [AdminStudentCreateController::class, 'create'])->name('admin.addStudent.create');
+Route::post('/admin/addStudent/store', [AdminStudentCreateController::class, 'store'])->name('admin.addStudent.store');
+
+// Add Student (Admin) CSV
+Route::get('/admin/addStudent/upload', [AdminStudentCSVController::class, 'showUploadForm'])->name('admin.addStudent.upload');
+Route::post('/admin/addStudent/import', [AdminStudentCSVController::class, 'importCSV'])->name('admin.addStudent.import');
+
+
+
+// Add Instructor (Admin) Manual Entry
+
+Route::get('/admin/instructors/create', [AdminInstructorCreateController::class, 'create'])->name('admin.addInstructor.create');
+Route::post('/admin/instructors', [AdminInstructorCreateController::class, 'store'])->name('admin.addInstructor.store');
+
+
+// Add Instructor (Admin) CSV
+Route::get('/admin/addInstructor/upload', [AdminInstructorCSVController::class, 'showUploadForm'])->name('admin.addInstructor.upload');
+Route::post('/admin/addInstructor/import', [AdminInstructorCSVController::class, 'importCSV'])->name('admin.addInstructor.import');

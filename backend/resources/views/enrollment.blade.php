@@ -1,4 +1,4 @@
-<!-- resources/views/enroll.blade.php -->
+{{-- <!-- resources/views/enroll.blade.php -->
 
 @extends('layouts.app')
 
@@ -108,4 +108,4 @@
         });
     });
 </script>
-@endsection
+@endsection --}}
