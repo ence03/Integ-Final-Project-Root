@@ -95,7 +95,6 @@
             margin-top: 10px;
         }
 
-
         .top-bar .logo-container {
             display: flex;
             align-items: center;
@@ -125,7 +124,7 @@
             z-index: 1;
             right: 0;
             top: 100%;
-	        border-radius: 20px;
+            border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -135,7 +134,7 @@
             text-decoration: none;
             display: block;
             text-align: left;
-	        border-radius: 20px;
+            border-radius: 20px;
         }
 
         .dropdown-content a:hover {
@@ -155,7 +154,7 @@
 
         .main-content {
             width: 100%;
-            max-width: 1600px;
+            max-width: 1200px;
             padding: 20px;
             flex-direction: column;
             align-items: center;
@@ -171,14 +170,11 @@
             margin-bottom: 20px;
         }
 
-        table,
-        th,
-        td {
+        table, th, td {
             border: 1px solid #dee2e6;
         }
 
-        th,
-        td {
+        th, td {
             padding: 12px;
             text-align: left;
         }
@@ -188,25 +184,36 @@
             font-weight: bold;
         }
 
-        .print-button-container {
+        .total-units {
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .total-units-digit {
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .drop-button-container {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             width: 100%;
             padding: 10px 0;
         }
 
-        .print-button {
+        .drop-button {
             padding: 10px 20px;
-            background-color: #FEC619;
+            background-color: #dc3545;
             border: none;
             border-radius: 4px;
-            color: #000;
+            color: #fff;
             font-size: 16px;
             cursor: pointer;
         }
 
-        .print-button:hover {
-            background-color: #ffd700;
+        .drop-button:hover {
+            background-color: #c82333;
         }
 
         @media (max-width: 768px) {
@@ -263,8 +270,8 @@
             <li><a href="dashboardstudent">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li class="active"><a href="studentgrades">Grades</a></li>
-            <li><a href="studentcoursemanagement">Course Management</a></li>
+            <li><a href="studentgrades">Grades</a></li>
+            <li class="active"><a href="studentcoursemanagement">Course Management</a></li>
         </ul>
     </div>
     <div class="content-container">
@@ -282,81 +289,66 @@
             </div>
         </div>
         <div class="main-content" id="main-content">
-            <h2>Grades</h2>
-            <table id="grades-table">
+            <h2>Course Management</h2>
+            <p>Adding and Dropping</p>
+            <table>
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Code</th>
-                        <th>Descriptive</th>
+                        <th>Select</th>
+                        <th>Course Name</th>
+                        <th>Course Code</th>
                         <th>Units</th>
-                        <th>Midterm</th>
-                        <th>Final</th>
-                        <th>Re-Exam</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>IT333</td>
+                        <td><input type="checkbox"></td>
                         <td>Integrative Programming and Technologies</td>
+                        <td>IT322</td>
                         <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>IT333</td>
-                        <td>Applications Development and Emerging Technologies</td>
+                        <td><input type="checkbox"></td>
+                        <td>Application Development and Emerging Technology</td>
+                        <td>IT323</td>
                         <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>IT333</td>
+                        <td><input type="checkbox"></td>
                         <td>Quantitative Methods</td>
+                        <td>IT324</td>
                         <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>IT333</td>
+                        <td><input type="checkbox"></td>
                         <td>IT Elective 2</td>
+                        <td>IT325</td>
                         <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td>5</td>
-                        <td>IT333</td>
+                        <td><input type="checkbox"></td>
                         <td>Philippine Indigenous Communities and Peace Education</td>
+                        <td>PICPE</td>
                         <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
                     </tr>
                     <tr>
-                        <td>6</td>
-                        <td>IT333</td>
+                        <td><input type="checkbox"></td>
                         <td>Foreign Language</td>
+                        <td>FreeElec</td>
                         <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
+                    </tr>
+                    <tr>
                         <td></td>
+                        <td></td>
+                        <td class="total-units">Total units:</td>
+                        <td class="total-units-digit">18</td>
                     </tr>
                 </tbody>
             </table>
-            <div class="print-button-container">
-                <button class="print-button" onclick="downloadCSV()">Print Grades</button>
+            <div class="drop-button-container">
+                <button class="drop-button">Drop</button>
             </div>
         </div>
-
     </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
@@ -379,28 +371,6 @@
                     }
                 }
             }
-        }
-
-        function downloadCSV() {
-            const table = document.getElementById('grades-table');
-            let csv = [];
-            for (let row of table.rows) {
-                let cols = [];
-                for (let cell of row.cells) {
-                    cols.push(cell.innerText);
-                }
-                csv.push(cols.join(','));
-            }
-            const csvContent = csv.join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.setAttribute('hidden', '');
-            a.setAttribute('href', url);
-            a.setAttribute('download', 'grades.csv');
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
         }
     </script>
 </body>
