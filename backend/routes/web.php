@@ -9,6 +9,18 @@ use App\Http\Controllers\dashboardStudent;
 use App\Http\Controllers\dashboardTeacher;
 use App\Http\Controllers\StudentLoginController;
 
+
+use App\Http\Controllers\AdminCSVUserController;
+use App\Http\Controllers\AdminManualUserController;
+
+use App\Http\Controllers\AdminStudentCreateController;
+use App\Http\Controllers\AdminStudentCSVController;
+
+use App\Http\Controllers\AdminInstructorCreateController;
+use App\Http\Controllers\AdminInstructorCSVController;
+
+
+
 Route::get('/', function () {
     return view('login');
 });
@@ -46,6 +58,7 @@ Route::delete('enrollments/{id}', [AdminEnrollmentController::class, 'destroy'])
 Route::get('/course/instructors', [AdminEnrollmentController::class, 'fetchInstructorsByCourse'])->name('course.instructors');
 Route::get('/course/instructor/by/course/instructor', [AdminEnrollmentController::class, 'fetchCourseInstructorByCourseInstructor'])->name('course.instructor.by.course.instructor');
 
+//Routes Instructors
 Route::get('/instructors', [CourseInstructor::class, 'index'])->name('instructors.index');
 Route::get('/instructors/{id}/edit', [CourseInstructor::class, 'edit'])->name('instructors.edit');
 Route::put('/instructors/{id}', [CourseInstructor::class, 'update'])->name('instructors.update');

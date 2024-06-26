@@ -11,16 +11,6 @@
         <button type="submit">Import CSV</button>
     </form>
 
-    <form method="POST" action="{{ route('import.users') }}" enctype="multipart/form-data">
-        @csrf
-
-        <div class="form-group">
-            <label for="file">CSV File</label>
-            <input type="file" id="file" name="file" class="form-control" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Import</button>
-    </form>
 
     @if(session('success'))
         <div style="color: green;">
