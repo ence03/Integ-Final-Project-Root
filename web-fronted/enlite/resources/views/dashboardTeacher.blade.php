@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
-    <title>Dashboard</title>
+    <title>Home</title>
     <style>
         body {
             display: flex;
@@ -84,8 +84,6 @@
             justify-content: center;
             height: 100vh;
             width: 100%;
-            margin-top: 7rem;
-            margin-left: 2rem;
         }
 
         .main-content.shifted {
@@ -165,11 +163,11 @@
             left: 85px;
             top: 179px;
             margin-top: 3rem;
-            margin-left: 18rem;
+            margin-left: 14rem;
         }
 
         .dashboard-p {
-            position: flex;
+            position: Roboto flex;
             width: 221px;
             height: 55px;
             left: 63px;
@@ -179,7 +177,7 @@
             font-size: 30px;
             line-height: 35px;
             color: #000000;
-            margin-left: 10rem;
+            margin-left: 17.5rem;
             margin-top: 7rem;
         }
 
@@ -197,6 +195,7 @@
             justify-content: center;
             transition: background-color 0.3s ease;
             cursor: pointer;
+            margin-left: 2rem;
         }
 
         .card ion-icon {
@@ -283,12 +282,12 @@
 
 <body>
     <div class="sidebar" id="sidebar">
-    <ul>
+        <ul>
             <li class="active"><a href="dashboardteacher">Dashboard</a></li>
-            <li><a href="teacherprofile">Profile</a></li>
-            <li><a href="#">Notification</a></li>
+            <li><a href="teachernotification">Profile</a></li>
+            <li><a href="teacherprofile">Notification</a></li>
             <li class="dropdown">
-                <a href="#">Course Portal & Student Management</a>
+                <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
                     <a href="courseportalteacher">Course Portal</a>
                     <a href="teachercoursemanagement">Course Management</a>
