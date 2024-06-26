@@ -10,16 +10,17 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../assets/image/logo.png";
 import Icon from "react-native-vector-icons/Ionicons";
-import CheckBox from "expo-checkbox";
+import { AsyncStorage } from "@react-native-async-storage/async-storage";
+import axios from "react-native-axios";
 
 const LoginScreen = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
   const navigation = useNavigation();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    navigation.navigate("Dashboard"); //for students na
-    // navigation.navigate("TeacherDashboard"); //for teacher na sya
+  const handleLogin = async () => {
+    navigation.navigate("TeacherDashboard");
   };
 
   return (
@@ -31,12 +32,19 @@ const LoginScreen = () => {
         <Image source={Logo} style={styles.logo} resizeMode="contain" />
       </View>
       <View style={styles.inputContainer}>
-        <TextInput placeholder="Username" style={styles.input} />
+        <TextInput
+          placeholder="Username"
+          style={styles.input}
+          value={username}
+          onChangeText={(text) => setUsername(text)}
+        />
         <View style={styles.passwordContainer}>
           <TextInput
             placeholder="Password"
             style={styles.input}
             secureTextEntry={!passwordVisible}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
           />
           <TouchableOpacity
             style={styles.eye}
@@ -49,14 +57,6 @@ const LoginScreen = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <View style={styles.checkbox}>
-        <CheckBox
-          value={isChecked}
-          onValueChange={setIsChecked}
-          color={isChecked ? "#74aef5" : undefined}
-        />
-        <Text> Remember me</Text>
-      </View>
     </View>
   );
 };
@@ -114,13 +114,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "flex-end",
     marginRight: 10,
-  },
-  checkbox: {
-    margin: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    width: "90%",
   },
 });
 
