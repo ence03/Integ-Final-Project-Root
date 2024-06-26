@@ -95,7 +95,6 @@
             margin-top: 10px;
         }
 
-
         .top-bar .logo-container {
             display: flex;
             align-items: center;
@@ -125,6 +124,8 @@
             z-index: 1;
             right: 0;
             top: 100%;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-content a {
@@ -133,6 +134,7 @@
             text-decoration: none;
             display: block;
             text-align: left;
+            border-radius: 20px;
         }
 
         .dropdown-content a:hover {
@@ -140,11 +142,79 @@
             color: #000;
         }
 
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #dee2e6;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .total-units {
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .total-units-digit {
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .drop-button-container {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        .drop-button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .drop-button:hover {
+            background-color: #c82333;
+        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -189,9 +259,7 @@
             .sidebar ul .dropdown-content a:hover {
                 background-color: #FEC619;
                 color: #fff;
-
             }
-
         }
     </style>
 </head>
@@ -220,8 +288,67 @@
                 </div>
             </div>
         </div>
-
-
+        <div class="main-content" id="main-content">
+            <h2>Course Management</h2>
+            <p>Adding and Dropping</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Course Name</th>
+                        <th>Course Code</th>
+                        <th>Units</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Integrative Programming and Technologies</td>
+                        <td>IT322</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Application Development and Emerging Technology</td>
+                        <td>IT323</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Quantitative Methods</td>
+                        <td>IT324</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>IT Elective 2</td>
+                        <td>IT325</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Philippine Indigenous Communities and Peace Education</td>
+                        <td>PICPE</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>Foreign Language</td>
+                        <td>FreeElec</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="total-units">Total units:</td>
+                        <td class="total-units-digit">18</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="drop-button-container">
+                <button class="drop-button">Drop</button>
+            </div>
+        </div>
     </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>

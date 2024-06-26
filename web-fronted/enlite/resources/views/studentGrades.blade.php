@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
     <title>Dashboard</title>
     <style>
         body {
@@ -94,6 +94,7 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
 
         .top-bar .logo-container {
             display: flex;
@@ -285,6 +286,7 @@
                         <th>#</th>
                         <th>Code</th>
                         <th>Descriptive</th>
+                        <th>Units</th>
                         <th>Midterm</th>
                         <th>Final</th>
                         <th>Re-Exam</th>
@@ -295,6 +297,7 @@
                         <td>1</td>
                         <td>IT333</td>
                         <td>Integrative Programming and Technologies</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
                         <td></td>
@@ -303,6 +306,7 @@
                         <td>2</td>
                         <td>IT333</td>
                         <td>Applications Development and Emerging Technologies</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
                         <td></td>
@@ -311,6 +315,7 @@
                         <td>3</td>
                         <td>IT333</td>
                         <td>Quantitative Methods</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
                         <td></td>
@@ -319,6 +324,7 @@
                         <td>4</td>
                         <td>IT333</td>
                         <td>IT Elective 2</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
                         <td></td>
@@ -327,6 +333,7 @@
                         <td>5</td>
                         <td>IT333</td>
                         <td>Philippine Indigenous Communities and Peace Education</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
                         <td></td>
@@ -335,6 +342,7 @@
                         <td>6</td>
                         <td>IT333</td>
                         <td>Foreign Language</td>
+                        <td>3</td>
                         <td>1</td>
                         <td>1</td>
                         <td></td>
