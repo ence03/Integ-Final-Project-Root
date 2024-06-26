@@ -2,10 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
-class AllUsers extends Model
+class AllUsers extends Authenticatable
 {
-    use HasFactory;
+    protected $primaryKey = 'UserID';
+
+    protected $fillable = [
+        'RoleID', 'Username', 'Password',
+    ];
+
+    protected $hidden = [
+        'Password', 'remember_token',
+    ];
+
+    public function getAuthPassword()
+    {
+        return $this->Password;
+    }
+
+    protected $table = 'all_users';
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['Password'] = Hash::make($value);
+    }
 }

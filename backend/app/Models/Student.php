@@ -9,32 +9,14 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $table = 'students';
     protected $primaryKey = 'StudentID';
-    public $incrementing = false;
-    protected $keyType = 'int';
-
-    // Enable timestamps
-    public $timestamps = true;
 
     protected $fillable = [
-        'UserID',
-        'FirstName',
-        'MiddleName',
-        'LastName',
-        'Email',
-        'Address',
-        'Birthdate',
-        'ContactNumber',
-        'EnrollmentStatus',
-    ];
-
-    protected $casts = [
-        'Birthdate' => 'date',
+        'UserID', 'FirstName', 'MiddleName', 'LastName', 'Email', 'Address', 'Birthdate', 'ContactNumber', 'EnrollmentStatus'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'UserID', 'UserID');
+        return $this->belongsTo(AllUser::class, 'UserID');
     }
 }
