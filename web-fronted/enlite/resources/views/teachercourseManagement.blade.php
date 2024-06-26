@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
     <title>Dashboard</title>
     <style>
-        body {
+          body {
             display: flex;
-            height: 100vh;
+            height: 100%;
+            width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -52,13 +53,13 @@
         }
 
         .sidebar ul li.active {
-            background-color: #001B50;
+            background-color: #FEC619;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
 
         .sidebar ul li.active a {
-            color: #fff;
+            color: #000;
             font-weight: bold;
         }
 
@@ -75,18 +76,7 @@
         }
 
         .sidebar ul li:hover a {
-            color: #fff;
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.shifted {
-            margin-left: 200px;
+            color: #000;
         }
 
         .top-bar {
@@ -100,8 +90,9 @@
         }
 
         .top-bar ion-icon {
-            font-size: 24px;
+            font-size: 40px;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         .top-bar .logo-container {
@@ -133,6 +124,8 @@
             z-index: 1;
             right: 0;
             top: 100%;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-content a {
@@ -141,15 +134,28 @@
             text-decoration: none;
             display: block;
             text-align: left;
+            border-radius: 20px;
         }
 
         .dropdown-content a:hover {
             background-color: #FEC619;
-            color: #000 !important;
+            color: #000;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.shifted {
+            margin-left: 200px;
         }
 
         .course-management-container {
