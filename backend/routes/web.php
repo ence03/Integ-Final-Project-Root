@@ -5,11 +5,18 @@ use App\Http\Controllers\AdminCSVEnrollment;
 use App\Http\Controllers\StudentDataController;
 use App\Http\Controllers\AdminEnrollmentController;
 use App\Http\Controllers\CourseInstructor;
+use App\Http\Controllers\dashboardStudent;
+use App\Http\Controllers\dashboardTeacher;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+// Define the welcome route
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 
 Route::get('/import', function () {
@@ -44,3 +51,9 @@ Route::put('/instructors/{id}', [CourseInstructor::class, 'update'])->name('inst
 Route::get('/instructors/{id}/courses', [CourseInstructor::class, 'showCourses'])->name('instructors.courses');
 Route::post('/instructors/{id}/courses/{courseId}/add', [CourseInstructor::class, 'addCourse'])->name('instructors.courses.add');
 Route::put('/instructors/{id}/courses/{courseId}/drop', [CourseInstructor::class, 'dropCourse'])->name('instructors.courses.drop');
+
+
+Route::get('login', [StudentLoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [StudentLoginController::class, 'login']);
+Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
+Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
