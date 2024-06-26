@@ -105,7 +105,7 @@
         </div>
         <div class="login-form">
             <form action="{{ route('login') }}" method="POST">
-
+                @csrf
                 <label for="email">Email</label>
                 <input type="text" name="email" placeholder="Email Address" required>
                 <label for="password">Password</label>
