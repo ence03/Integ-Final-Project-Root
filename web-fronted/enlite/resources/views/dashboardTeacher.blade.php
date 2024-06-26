@@ -150,7 +150,6 @@
             color: #000;
         }
 
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -202,7 +201,6 @@
             font-size: 143px;
             margin-bottom: 10px;
         }
-
 
         .card p {
             margin: 0;
@@ -284,8 +282,8 @@
     <div class="sidebar" id="sidebar">
         <ul>
             <li class="active"><a href="dashboardteacher">Dashboard</a></li>
-            <li><a href="teachernotification">Profile</a></li>
-            <li><a href="teacherprofile">Notification</a></li>
+            <li><a href="teacherprofile">Profile</a></li>
+            <li><a href="teachernotification">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
@@ -304,7 +302,7 @@
             <div class="dropdown">
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
+                    <a href="teacherprofile">Profile</a>
                     <a href="#">Logout</a>
                 </div>
             </div>
@@ -313,15 +311,15 @@
         <div id="main-content">
             <p class="dashboard-p">Dashboard</p>
             <div class="dashboard" style="color: #fff;">
-                <div class="card profile">
+                <div class="card profile" onclick="location.href='teacherprofile'">
                     <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
                 </div>
-                <div class="card notification">
+                <div class="card notification" onclick="location.href='teachernotification'">
                     <ion-icon name="notifications"></ion-icon>
                     <p>NOTIFICATION</p>
                 </div>
-                <div class="card course-management">
+                <div class="card course-management" onclick="location.href='teachercoursemanagement'">
                     <ion-icon name="reader"></ion-icon>
                     <p>COURSE & STUDENT MANAGEMENT</p>
                 </div>
