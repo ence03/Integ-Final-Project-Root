@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
-    <title>Dashboard</title>
+    <title>Course Portal</title>
     <style>
-        body {
+          body {
             display: flex;
             height: 100%;
             width: 100%;
@@ -53,13 +53,13 @@
         }
 
         .sidebar ul li.active {
-            background-color: #001B50;
+            background-color: #FEC619;
             border-radius: 20px;
             width: calc(auto - 2px);
         }
 
         .sidebar ul li.active a {
-            color: #fff;
+            color: #000;
             font-weight: bold;
         }
 
@@ -76,18 +76,7 @@
         }
 
         .sidebar ul li:hover a {
-            color: #fff;
-        }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.shifted {
-            margin-left: 200px;
+            color: #000;
         }
 
         .top-bar {
@@ -96,13 +85,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 100px 10px 0px;
+            padding: 0px 20px 10px 0px;
             border-bottom: 1px solid #ccc;
         }
 
         .top-bar ion-icon {
-            font-size: 24px;
+            font-size: 40px;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         .top-bar .logo-container {
@@ -134,6 +124,8 @@
             z-index: 1;
             right: 0;
             top: 100%;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-content a {
@@ -142,15 +134,26 @@
             text-decoration: none;
             display: block;
             text-align: left;
+            border-radius: 20px;
         }
 
         .dropdown-content a:hover {
             background-color: #FEC619;
-            color: #000 !important;
+            color: #000;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.shifted {
+            margin-left: 200px;
         }
 
         .dashboard-container {
@@ -334,7 +337,7 @@
             display: flex;
             align-items: center;
             margin-left: auto;
-            margin-right: 4rem;
+            margin-right: 1px;
             background-color: #f2f2f2;
             padding: 5px 10px;
             border-radius: 20px;
@@ -428,12 +431,12 @@
     </div>
     <div class="content-container">
         <div class="top-bar">
-            <ion-icon name="menu-outline" id="burger-menu" style="color: #fff;"></ion-icon>
+            <ion-icon name="menu-outline" id="burger-menu" style="color: #000;"></ion-icon>
             <div class="logo-container">
                 <img src="{{ asset('logo.png') }}" alt="EnLite" class="logo">
             </div>
             <div class="dropdown">
-                <ion-icon name="person-circle-outline" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
+                <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
                     <a href="#">Logout</a>
@@ -460,6 +463,7 @@
                         </tr>
                     </thead>
                     <tbody id="student-table-body">
+                        <!-- Table rows will be added dynamically -->
                     </tbody>
                 </table>
                 <div class="buttons">
@@ -492,14 +496,12 @@
     <script>
         document.getElementById('burger-menu').addEventListener('click', function() {
             document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('main-content').classList.toggle('shifted');
         });
 
         document.getElementById('user-menu').addEventListener('click', function() {
             document.getElementById('user-dropdown').classList.toggle('show');
         });
 
-        // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
             if (!event.target.matches('#user-menu')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
