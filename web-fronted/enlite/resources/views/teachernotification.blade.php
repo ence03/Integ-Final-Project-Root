@@ -125,8 +125,6 @@
             z-index: 1;
             right: 0;
             top: 100%;
-	        border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-content a {
@@ -135,7 +133,6 @@
             text-decoration: none;
             display: block;
             text-align: left;
-	        border-radius: 20px;
         }
 
         .dropdown-content a:hover {
@@ -143,70 +140,122 @@
             color: #000;
         }
 
+
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .content-container {
+        .profile-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            width: 80%;
+            height: 140%;
+            margin-top: 5rem;
+            margin-left: 8rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-header div {
             display: flex;
             flex-direction: column;
-            align-items: center;
         }
 
-        .main-content {
-            width: 100%;
-            max-width: 1600px;
-            padding: 20px;
-            flex-direction: column;
-            align-items: center;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .profile-header h2 {
+            margin: 0;
+        }
+
+        .profile-header p {
+            margin: 0;
+            color: #666;
+        }
+
+        .user-details {
+            padding: 30px;
+            background-color: #e8f0fe;
             border-radius: 8px;
-            margin-top: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 15rem;
+
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
+        .user-details h3 {
+            margin-top: 0;
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid #dee2e6;
+        .user-details p {
+            margin: 5px 0;
         }
 
-        th,
-        td {
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f8f9fa;
+        .user-details p span {
             font-weight: bold;
         }
 
-        .print-button-container {
+        .notif-details p {
+            border-bottom: 1px solid #ccc;
+        }
+
+
+        .notification-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin-top: 4rem;
+            height: auto;
+            margin-left: 15rem;
+        }
+
+        .notification-header {
             display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            padding: 10px 0;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
         }
 
-        .print-button {
-            padding: 10px 20px;
-            background-color: #FEC619;
-            border: none;
-            border-radius: 4px;
-            color: #000;
-            font-size: 16px;
-            cursor: pointer;
+        .notification-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+            transition: background-color 0.3s ease;
         }
 
-        .print-button:hover {
-            background-color: #ffd700;
+        .notification-item.unread {
+            background-color: #e8f0fe;
+        }
+
+        .notification-item ion-icon {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        .notification-item p {
+            margin: 0;
+            color: #333;
+        }
+
+        .notification-header div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification-header h2 {
+            margin: 0;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
         }
 
         @media (max-width: 768px) {
@@ -252,6 +301,7 @@
             .sidebar ul .dropdown-content a:hover {
                 background-color: #FEC619;
                 color: #fff;
+
             }
         }
     </style>
@@ -260,11 +310,16 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li><a href="dashboardstudent">Dashboard</a></li>
-            <li><a href="studentprofile">Profile</a></li>
-            <li><a href="studentnotification">Notification</a></li>
-            <li class="active"><a href="studentgrades">Grades</a></li>
-            <li><a href="studentcoursemanagement">Course Management</a></li>
+            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="teacherprofile">Profile</a></li>
+            <li><a href="teachernotification">Notification</a></li>
+            <li class="dropdown">
+                <a href="#">Course & Student Management</a>
+                <div class="dropdown-content">
+                    <a href="courseportalteacher">Course Portal</a>
+                    <a href="teachercoursemanagement">Course Management</a>
+                </div>
+            </li>
         </ul>
     </div>
     <div class="content-container">
@@ -276,84 +331,30 @@
             <div class="dropdown">
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
-                    <a href="studentprofile">Profile</a>
-                    <a href="/">Logout</a>
+                    <a href="#">Profile</a>
+                    <a href="#">Logout</a>
                 </div>
             </div>
         </div>
-        <div class="main-content" id="main-content">
-            <h2>Grades</h2>
-            <table id="grades-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Code</th>
-                        <th>Descriptive</th>
-                        <th>Units</th>
-                        <th>Midterm</th>
-                        <th>Final</th>
-                        <th>Re-Exam</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>IT333</td>
-                        <td>Integrative Programming and Technologies</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>IT333</td>
-                        <td>Applications Development and Emerging Technologies</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>IT333</td>
-                        <td>Quantitative Methods</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>IT333</td>
-                        <td>IT Elective 2</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>IT333</td>
-                        <td>Philippine Indigenous Communities and Peace Education</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>IT333</td>
-                        <td>Foreign Language</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="print-button-container">
-                <button class="print-button" onclick="downloadCSV()">Print Grades</button>
+
+        <div class="notification-container">
+            <div class="notification-header">
+                <div>
+                    <h2>Notifications</h2>
+                </div>
+                <button onclick="markAllAsRead()">Mark All as Read</button>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You have successfully graded Balagulan in the subject Networking 1.</p>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You have successfully graded Deguino in the subject Applications Development.</p>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You have successfully graded Ratunil in the subject Quantitative Methods.</p>
             </div>
         </div>
 
@@ -381,26 +382,11 @@
             }
         }
 
-        function downloadCSV() {
-            const table = document.getElementById('grades-table');
-            let csv = [];
-            for (let row of table.rows) {
-                let cols = [];
-                for (let cell of row.cells) {
-                    cols.push(cell.innerText);
-                }
-                csv.push(cols.join(','));
-            }
-            const csvContent = csv.join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.setAttribute('hidden', '');
-            a.setAttribute('href', url);
-            a.setAttribute('download', 'grades.csv');
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        function markAllAsRead() {
+            const notifications = document.querySelectorAll('.notification-item');
+            notifications.forEach(notification => {
+                notification.classList.remove('unread');
+            });
         }
     </script>
 </body>

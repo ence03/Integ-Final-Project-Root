@@ -30,7 +30,7 @@ Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashb
 Route::get('/teachercoursemanagement', [teachercourseManagement::class, 'index'])->name('teachercourseManagement');
 Route::get('/courseportalteacher', [courseportalteacher::class, 'index'])->name('courseportalteacher');
 Route::get('/teacherprofile', [teacherprofile::class, 'index'])->name('teacherprofile');
-
+Route::get('/teachernotification', [teachernotification::class, 'index'])->name('teachernotification');
 
 
 

@@ -10,7 +10,7 @@
         body {
             display: flex;
             height: 100%;
-            width: 100%;
+	    width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -125,7 +125,7 @@
             z-index: 1;
             right: 0;
             top: 100%;
-	        border-radius: 20px;
+	    border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -135,7 +135,7 @@
             text-decoration: none;
             display: block;
             text-align: left;
-	        border-radius: 20px;
+	    border-radius: 20px;
         }
 
         .dropdown-content a:hover {
@@ -143,71 +143,11 @@
             color: #000;
         }
 
+
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .content-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .main-content {
-            width: 100%;
-            max-width: 1600px;
-            padding: 20px;
-            flex-direction: column;
-            align-items: center;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin-top: 50px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid #dee2e6;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .print-button-container {
-            display: flex;
-            justify-content: flex-end;
-            width: 100%;
-            padding: 10px 0;
-        }
-
-        .print-button {
-            padding: 10px 20px;
-            background-color: #FEC619;
-            border: none;
-            border-radius: 4px;
-            color: #000;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .print-button:hover {
-            background-color: #ffd700;
-        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -252,7 +192,9 @@
             .sidebar ul .dropdown-content a:hover {
                 background-color: #FEC619;
                 color: #fff;
+
             }
+
         }
     </style>
 </head>
@@ -262,8 +204,8 @@
         <ul>
             <li><a href="dashboardstudent">Dashboard</a></li>
             <li><a href="studentprofile">Profile</a></li>
-            <li><a href="studentnotification">Notification</a></li>
-            <li class="active"><a href="studentgrades">Grades</a></li>
+            <li class="active"><a href="studentnotification">Notification</a></li>
+            <li><a href="studentgrades">Grades</a></li>
             <li><a href="studentcoursemanagement">Course Management</a></li>
         </ul>
     </div>
@@ -277,85 +219,11 @@
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="studentprofile">Profile</a>
-                    <a href="/">Logout</a>
+                    <a href="#">Logout</a>
                 </div>
             </div>
         </div>
-        <div class="main-content" id="main-content">
-            <h2>Grades</h2>
-            <table id="grades-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Code</th>
-                        <th>Descriptive</th>
-                        <th>Units</th>
-                        <th>Midterm</th>
-                        <th>Final</th>
-                        <th>Re-Exam</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>IT333</td>
-                        <td>Integrative Programming and Technologies</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>IT333</td>
-                        <td>Applications Development and Emerging Technologies</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>IT333</td>
-                        <td>Quantitative Methods</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>IT333</td>
-                        <td>IT Elective 2</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>IT333</td>
-                        <td>Philippine Indigenous Communities and Peace Education</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>IT333</td>
-                        <td>Foreign Language</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="print-button-container">
-                <button class="print-button" onclick="downloadCSV()">Print Grades</button>
-            </div>
-        </div>
+
 
     </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -379,28 +247,6 @@
                     }
                 }
             }
-        }
-
-        function downloadCSV() {
-            const table = document.getElementById('grades-table');
-            let csv = [];
-            for (let row of table.rows) {
-                let cols = [];
-                for (let cell of row.cells) {
-                    cols.push(cell.innerText);
-                }
-                csv.push(cols.join(','));
-            }
-            const csvContent = csv.join('\n');
-            const blob = new Blob([csvContent], { type: 'text/csv' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.setAttribute('hidden', '');
-            a.setAttribute('href', url);
-            a.setAttribute('download', 'grades.csv');
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
         }
     </script>
 </body>

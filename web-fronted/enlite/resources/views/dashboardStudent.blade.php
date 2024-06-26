@@ -281,7 +281,7 @@
         <ul>
             <li class="active"><a href="dashboardstudent">Dashboard</a></li>
             <li><a href="studentprofile">Profile</a></li>
-            <li><a href="#">Notification</a></li>
+            <li><a href="studentnotification">Notification</a></li>
             <li><a href="studentgrades">Grades</a></li>
             <li><a href="studentcoursemanagement">Course Management</a></li>
         </ul>
@@ -308,7 +308,7 @@
                     <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
                 </a>
-                <a href="#" class="card notification">
+                <a href="studentnotification" class="card notification">
                     <ion-icon name="notifications"></ion-icon>
                     <p>NOTIFICATION</p>
                 </a>
