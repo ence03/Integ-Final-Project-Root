@@ -417,14 +417,14 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Notification</a></li>
+        <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="teachernotification">Profile</a></li>
+            <li><a href="teacherprofile">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
-                    <a href="#">Course Portal</a>
-                    <a href="#">Course Management</a>
+                    <a href="courseportalteacher">Course Portal</a>
+                    <a href="teachercoursemanagement">Course Management</a>
                 </div>
             </li>
         </ul>
@@ -463,7 +463,6 @@
                         </tr>
                     </thead>
                     <tbody id="student-table-body">
-                        <!-- Table rows will be added dynamically -->
                     </tbody>
                 </table>
                 <div class="buttons">
@@ -514,7 +513,6 @@
             }
         }
 
-        // Show/Hide drop button based on checkbox selection
         const checkboxes = document.querySelectorAll('.student-checkbox');
         const dropButton = document.getElementById('drop-button');
 
@@ -525,7 +523,6 @@
             });
         });
 
-        // Popup functionality
         const addStudentButton = document.getElementById('add-student-button');
         const popup = document.getElementById('popup');
         const popupBackground = document.getElementById('popup-background');
@@ -561,7 +558,6 @@
         });
 
         uploadCsvButton.addEventListener('click', function() {
-            // Trigger file input for uploading CSV
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
             fileInput.accept = '.csv';
@@ -584,21 +580,18 @@
             if (exists) {
                 showNotification();
             } else {
-                // Add new student to the table
+        
                 addStudentToTable(id, lastName, firstName, middleName);
             }
 
-            // Clear form fields
             document.getElementById('student-id').value = '';
             document.getElementById('student-lastname').value = '';
             document.getElementById('student-firstname').value = '';
             document.getElementById('student-middlename').value = '';
 
-            // Close the popup after submission
             closePopup();
         });
 
-        // Drop button functionality
         dropButton.addEventListener('click', function() {
             const checkedBoxes = document.querySelectorAll('.student-checkbox:checked');
             checkedBoxes.forEach(checkbox => {
@@ -607,7 +600,6 @@
             dropButton.style.display = 'none';
         });
 
-        // Search functionality
         document.getElementById('search-input').addEventListener('input', function() {
             const filter = this.value.toLowerCase();
             const rows = document.querySelectorAll('#student-table-body tr');
@@ -653,7 +645,6 @@
             `;
             document.getElementById('student-table-body').appendChild(newRow);
 
-            // Reattach event listener for new checkbox
             newRow.querySelector('.student-checkbox').addEventListener('change', function() {
                 const anyChecked = Array.from(document.querySelectorAll('.student-checkbox')).some(checkbox => checkbox.checked);
                 dropButton.style.display = anyChecked ? 'block' : 'none';
