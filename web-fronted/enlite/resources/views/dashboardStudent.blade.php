@@ -313,7 +313,7 @@
                     <ion-icon name="star"></ion-icon>
                     <p>GRADES</p>
                 </a>
-                <a href="#" class="card course-management">
+                <a href="studentcoursemanagement" class="card course-management">
                     <ion-icon name="reader"></ion-icon>
                     <p>COURSE MANAGEMENT</p>
                 </a>

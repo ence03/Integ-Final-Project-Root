@@ -216,7 +216,7 @@
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="/">Logout</a>
                 </div>
             </div>
         </div>
