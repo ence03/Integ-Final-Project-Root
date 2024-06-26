@@ -9,7 +9,8 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
+            height: 100%;
+            width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -459,7 +460,6 @@
                         </tr>
                     </thead>
                     <tbody id="student-table-body">
-                        <!-- Table rows will be added dynamically -->
                     </tbody>
                 </table>
                 <div class="buttons">
