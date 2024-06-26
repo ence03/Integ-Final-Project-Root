@@ -9,6 +9,8 @@ import TeacherDashboard from "./src/screens/Teacher/TeacherDashboard";
 import TeacherCourseManagement from "./src/screens/Teacher/TeacherCourse&StudentManagement";
 import StudentGrade from "./src/screens/Students/StudentGrade";
 import StudentNotification from "./src/screens/Students/StudentNotification";
+import EnrolledStudents from "./src/screens/Teacher/EnrolledStudents";
+import AddStudent from "./src/screens/Teacher/AddStudent";
 
 
 
@@ -51,6 +53,16 @@ export default function App() {
         <Stack.Screen
           name="TeacherCourseManagement"
           component={TeacherCourseManagement}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="EnrolledStudents"
+          component={EnrolledStudents}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="AddStudent"
+          component={AddStudent}
           options={{ headerShown: false }}
         />
 

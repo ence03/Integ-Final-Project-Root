@@ -1,12 +1,29 @@
 import React, { useState } from "react";
-import {StyleSheet,Text,View,TouchableOpacity,ScrollView,Image,} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Pressable } from "react-native";
 import Checkbox from "expo-checkbox";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 import Logo from "../../../assets/image/logo.png";
+import Modal from 'react-native-modal';
 
 
 export default function CourseManagement() {
+  const navigation = useNavigation();
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [pressedItem, setPressedItem] = useState(null);
   const [selectedCourses, setSelectedCourses] = useState(Array(7).fill(false));
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const handlePressIn = (item) => {
+    setPressedItem(item);
+  };
+
+  const handlePressOut = () => {
+    setPressedItem(null);
+  };
 
   const toggleCheckbox = (index) => {
     const newSelectedCourses = [...selectedCourses];
@@ -27,7 +44,7 @@ export default function CourseManagement() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.menuButton} onPress={toggleModal}>
           <Icon name="bars" size={30} color="#000" />
         </TouchableOpacity>
         <Image source={Logo} style={styles.logo} />
@@ -54,8 +71,8 @@ export default function CourseManagement() {
             </View>
           ))}
           <Text style={styles.totalUnitsText}>
-          Total units: {selectedCourses.reduce((total, selected, index) => selected ? total + courses[index].Credits : total, 0)}
-        </Text>
+            Total units: {selectedCourses.reduce((total, selected, index) => selected ? total + courses[index].Credits : total, 0)}
+          </Text>
         </ScrollView>
         <TouchableOpacity style={styles.dropButton}>
           <Text style={styles.dropButtonText}>Drop</Text>
@@ -69,6 +86,40 @@ export default function CourseManagement() {
           <Icon name="home" size={30} color="#000" />
         </TouchableOpacity>
       </View>
+
+      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal} style={styles.modal}>
+        <View style={styles.modalContent}>
+          <View style={styles.modalHeader}>
+            <Icon name="user-circle" size={50} color="#000" />
+            <Text style={styles.modalName}>CHRISTIAN JAY ABRAGAN</Text>
+          </View>
+          {['Course Management', 'Grades', 'Notification', 'Settings'].map(item => (
+            <Pressable
+              key={item}
+              style={({ pressed }) => [
+                styles.menuItem,
+                pressedItem === item && styles.menuItemPressed,
+              ]}
+              onPressIn={() => handlePressIn(item)}
+              onPressOut={handlePressOut}
+              onPress={() => {
+                toggleModal();
+                navigation.navigate(item.replace(' ', ''));
+              }}
+            >
+              <Text
+                style={pressedItem === item ? styles.menuTextPressed : styles.menuText}
+              >
+                {item}
+              </Text>
+            </Pressable>
+          ))}
+          <TouchableOpacity style={styles.logoutButton} onPress={toggleModal}>
+            <Icon name="sign-out" size={20} color="#fff" />
+            <Text style={styles.logoutText}>LOG OUT</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -153,7 +204,7 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
   dropButton: {
-    backgroundColor: "#dc3545",
+    backgroundColor: "#024089",
     paddingVertical: 10,
     borderRadius: 5,
     alignItems: "center",
@@ -177,4 +228,61 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
   },
+  modal: {
+    justifyContent: 'flex-start',
+    margin: 0,
+    marginRight: 50,
+    marginTop: 45, 
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 20,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  modalName: {
+    marginLeft: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  menuItem: {
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  menuItemPressed: {
+    backgroundColor: '#f0f0f0',
+  },
+  menuText: {
+    fontSize: 18,
+    fontWeight: "500",
+  },
+  menuTextPressed: {
+    fontSize: 18,
+    fontWeight: "500",
+    color: "#8ecae6",
+  },
+  logoutButton: {
+    elevation: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fa841a",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 300,
+  },
+  logoutText: {
+    color: "#fff",
+    marginLeft: 10,
+  }
 });

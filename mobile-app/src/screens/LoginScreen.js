@@ -63,6 +63,8 @@ const LoginScreen = () => {
 
 const styles = StyleSheet.create({
   logo: {
+    marginRight: 20,
+    marginBottom: 100,
     width: 300,
   },
   container: {
@@ -93,13 +95,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: "#74aef5",
+    borderRadius: 20,
+    backgroundColor: "#ffc619",
     padding: 5,
     width: "83%",
     marginBottom: 10,
     alignItems: "center",
     borderColor: "black",
-    borderWidth: 1,
+    borderWidth: 0.2,
+    elevation: 5,
   },
   buttonText: {
     color: "white",
@@ -112,6 +116,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   checkbox: {
+    margin: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-start",
