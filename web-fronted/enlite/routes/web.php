@@ -7,6 +7,7 @@ use App\Http\Controllers\dashboardStudent;
 use App\Http\Controllers\teachercourseManagement;
 use App\Http\Controllers\courseportalteacher;
 use App\Http\Controllers\studentGrades;
+use App\Http\Controllers\studentCoursemanagement;
 
 Route::get('/', function () {
     return view('login');
@@ -18,11 +19,17 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 
-Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
-Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
-Route::get('/teachercoursemanagement', [teachercourseManagement::class, 'index'])->name('teachercourseManagement');
-Route::get('/courseportalteacher', [courseportalteacher::class, 'index'])->name('courseportalteacher');
-Route::get('/studentgrades', [studentGrades::class, 'index'])->name('studentGrades');
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+
+//teacher side
+Route::get('/dashboardteacher', [dashboardTeacher::class, 'index'])->name('dashboardTeacher');
+Route::get('/teachercoursemanagement', [teachercourseManagement::class, 'index'])->name('teachercourseManagement');
+Route::get('/courseportalteacher', [courseportalteacher::class, 'index'])->name('courseportalteacher');
+
+
+//student side
+Route::get('/dashboardstudent', [dashboardStudent::class, 'index'])->name('dashboardStudent');
+Route::get('/studentgrades', [studentGrades::class, 'index'])->name('studentGrades');
+Route::get('/studentcoursemanagement', [studentCoursemanagement::class, 'index'])->name('studentCoursemanagement');
+
