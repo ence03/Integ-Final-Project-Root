@@ -280,7 +280,7 @@
     <div class="sidebar" id="sidebar">
         <ul>
             <li class="active"><a href="dashboardstudent">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="studentprofile">Profile</a></li>
             <li><a href="#">Notification</a></li>
             <li><a href="studentgrades">Grades</a></li>
             <li><a href="studentcoursemanagement">Course Management</a></li>
@@ -295,7 +295,7 @@
             <div class="dropdown">
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
-                    <a href="#">Profile</a>
+                    <a href="studentprofile">Profile</a>
                     <a href="/">Logout</a>
                 </div>
             </div>
@@ -304,7 +304,7 @@
         <div class="main-content" id="main-content">
             <p class="dashboard-p">Dashboard</p>
             <div class="dashboard" style="color: #fff;" >
-                <a href="#" class="card profile">
+                <a href="studentprofile" class="card profile">
                     <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
                 </a>
