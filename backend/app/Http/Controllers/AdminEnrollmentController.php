@@ -18,7 +18,7 @@ class AdminEnrollmentController extends Controller
         $students = Student::all();
         $courseInstructors = CourseInstructor::all();
 
-        return view('enrollments.create', compact('yearSemesters', 'students', 'courseInstructors'));
+        return view('admin.enrollments.create', compact('yearSemesters', 'students', 'courseInstructors'));
     }
 
     public function filterStudents(Request $request)
