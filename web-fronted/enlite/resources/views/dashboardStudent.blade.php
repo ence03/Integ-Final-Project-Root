@@ -280,7 +280,7 @@
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
             <li><a href="studentgrades">Grades</a></li>
-            <li><a href="#">Course Management</a></li>
+            <li><a href="studentcoursemanagement">Course Management</a></li>
         </ul>
     </div>
     <div class="content-container">
