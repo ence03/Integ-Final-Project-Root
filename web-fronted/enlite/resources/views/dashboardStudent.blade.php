@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons.css">
     <title>Dashboard</title>
     <style>
         body {
@@ -95,7 +95,6 @@
             margin-top: 10px;
         }
 
-
         .top-bar .logo-container {
             display: flex;
             align-items: center;
@@ -140,11 +139,9 @@
             color: #000;
         }
 
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
-        
 
         .main-content {
             align-items: center;
@@ -191,13 +188,14 @@
             justify-content: center;
             transition: background-color 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
+            color: inherit;
         }
 
         .card ion-icon {
             font-size: 143px;
             margin-bottom: 10px;
         }
-
 
         .card p {
             margin: 0;
@@ -219,7 +217,6 @@
         }
 
         .card.course-management {
-            
             background-color: #FFC619;
         }
 
@@ -279,17 +276,11 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="">Dashboard</a></li>
+            <li class="active"><a href="dashboardstudent">Dashboard</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Notification</a></li>
-            <li ><a href="#">Grades</a></li>
-            <li class="dropdown">
-                <a href="#">Course Management</a>
-                <div class="dropdown-content">
-                    <a href="#">Course Portal</a>
-                    <a href="#">Course Management</a>
-                </div>
-            </li>
+            <li><a href="studentgrades">Grades</a></li>
+            <li><a href="#">Course Management</a></li>
         </ul>
     </div>
     <div class="content-container">
@@ -302,7 +293,7 @@
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="#">Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="/">Logout</a>
                 </div>
             </div>
         </div>
@@ -310,22 +301,22 @@
         <div class="main-content" id="main-content">
             <p class="dashboard-p">Dashboard</p>
             <div class="dashboard" style="color: #fff;" >
-                <div class="card profile">
+                <a href="#" class="card profile">
                     <ion-icon name="person"></ion-icon>
                     <p>PROFILE</p>
-                </div>
-                <div class="card notification">
+                </a>
+                <a href="#" class="card notification">
                     <ion-icon name="notifications"></ion-icon>
                     <p>NOTIFICATION</p>
-                </div>
-                <div class="card grades">
+                </a>
+                <a href="studentgrades" class="card grades">
                     <ion-icon name="star"></ion-icon>
                     <p>GRADES</p>
-                </div>
-                <div class="card course-management">
+                </a>
+                <a href="#" class="card course-management">
                     <ion-icon name="reader"></ion-icon>
-                    <p>COURSE & STUDENT MANAGEMENT</p>
-                </div>
+                    <p>COURSE MANAGEMENT</p>
+                </a>
             </div>
         </div>
 
