@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.css">
-    <title>Teacher's profile</title>
+    <title>Dashboard</title>
     <style>
         body {
             display: flex;
@@ -95,7 +95,6 @@
             margin-top: 10px;
         }
 
-
         .top-bar .logo-container {
             display: flex;
             align-items: center;
@@ -125,6 +124,8 @@
             z-index: 1;
             right: 0;
             top: 100%;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-content a {
@@ -133,6 +134,7 @@
             text-decoration: none;
             display: block;
             text-align: left;
+            border-radius: 20px;
         }
 
         .dropdown-content a:hover {
@@ -140,71 +142,160 @@
             color: #000;
         }
 
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .profile-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-            width: 80%;
-            height: 140%;
-            margin-top: 5rem;
-            margin-left: 8rem;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .profile-header img {
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .profile-header div {
+        .content-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .profile-header h2 {
-            margin: 0;
+        .profile {
+            width: 100%;
+            max-width: 1600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5rem;
         }
 
-        .profile-header p {
-            margin: 0;
-            color: #666;
+
+        .profile-content {
+            display: flex;
+            align-items: center;
+            width: 20%;
+            margin-bottom: 16rem;
         }
 
-        .user-details {
-            padding: 30px;
-            background-color: #e8f0fe;
-            border-radius: 8px;
+        .profile-content-account {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            width: 15rem;
+            border-radius: 20px;
 
         }
+       
 
-        .user-details h3 {
-            margin-top: 0;
+        .profile-card {
+            flex: 1;
+            height: 19rem;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-right: 2rem;
+            border-radius: 20px;
         }
 
-        .user-details p {
+        .teachername {
+            font-size: 20px;
+            font-weight: 600;
+            padding-bottom: 20px;
+        }
+
+        .teachername1 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-card p {
             margin: 5px 0;
         }
 
-        .user-details p span {
-            font-weight: bold;
+        .profile-form {
+            flex: 2;
+            padding: 20px;
         }
 
+        .profile-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .profile-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .profile-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .profile-form input[type="text"],
+        .profile-form input[type="email"],
+        .profile-form input[type="tel"],
+        .profile-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .profile-form .form-actions {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .profile-form .form-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background-color: #FEC619;
+            color: #000;
+        }
+
+        .save-btn:hover {
+            background-color: rgba(116, 175, 245, 0.5);
+            color: #000;
+        }
+
+        .cancel-btn {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .cancel-btn:hover {
+            background-color: #DC3232;
+            color: #000;
+        }
+
+        .profile-form .nav-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .profile-form .nav-buttons button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            background-color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #000;
+        }
+
+        .profile-form .nav-buttons button.selected {
+            background-color: #FEC619;
+        }
 
         @media (max-width: 768px) {
             .sidebar {
@@ -249,23 +340,17 @@
             .sidebar ul .dropdown-content a:hover {
                 background-color: #FEC619;
                 color: #fff;
-
             }
-
-
-
-
-
         }
     </style>
 </head>
 
 <body>
-<div class="sidebar" id="sidebar">
-        <ul>
+    <div class="sidebar" id="sidebar">
+    <ul>
             <li class="active"><a href="dashboardteacher">Dashboard</a></li>
-            <li><a href="teacherprofile">Profile</a></li>
-            <li><a href="teachernotification">Notification</a></li>
+            <li><a href="teachernotification">Profile</a></li>
+            <li><a href="teacherprofile">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course & Student Management</a>
                 <div class="dropdown-content">
@@ -284,26 +369,74 @@
             <div class="dropdown">
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
-                    <a href="teacherprofile">Profile</a>
-                    <a href="login">Logout</a>
+                    <a href="studentprofile">Profile</a>
+                    <a href="#">Logout</a>
                 </div>
             </div>
         </div>
 
-        <div class="profile-container">
-            <div class="profile-header">
-                <img src="https://via.placeholder.com/80" alt="Profile Picture">
-                <div>
-                    <h2>Neczar O. Balagulan</h2>
-                    <p>INSTRUCTOR</p>
+        <div class="profile">
+            <div class="profile-content">
+                <div class="profile-card">
+                    <img src="{{ asset('noprofile.png') }}" alt="Profile Picture">
+                    <p class="teachername">BALAGULAN, NECZAR O</p>
                     <p>2021012345</p>
+                    <p class="teachername1">Instructor</p>
                 </div>
             </div>
-            <div class="user-details">
-                <h3>User Details</h3>
-                <p><span>Email Address</span> <br>balagulan.neczar00@gmail.com</p>
-                <p><span>City / Town</span><br> Misamis Oriental</p>
-                <p><span>Country</span><br> Philippines</p>
+            <div class="profile-content-account">
+                <div class="profile-form">
+                    <div class="nav-buttons">
+                        <button id="user-account-info-btn" class="selected">User Account Info</button>
+                        <button id="change-password-btn">Change Password</button>
+                    </div>
+                    <div id="user-account-info-section">
+                        <h2>Profile Account</h2>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" value="2021012345">
+                        </div>
+                        <div class="form-group">
+                            <label for="complete-name">Complete Name</label>
+                            <input type="text" id="complete-name" value="BALAGULAN, NECZAR O">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="balagulan.neczar@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile-number">Mobile Number</label>
+                            <input type="tel" id="mobile-number" value="09123344566">
+                        </div>
+                        <div class="form-group">
+                            <label for="group">Group</label>
+                            <input type="text" id="group" value="Instructor">
+                        </div>
+                        <div class="form-actions">
+                            <button class="save-btn">Save Changes</button>
+                            <button class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                    <div id="change-password-section" style="display: none;">
+                        <h2>Change Password</h2>
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Re-enter New Password</label>
+                            <input type="password" id="confirm-password">
+                        </div>
+                        <div class="form-actions">
+                            <button class="save-btn">Change Password</button>
+                            <button class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -330,6 +463,20 @@
                 }
             }
         }
+
+        document.getElementById('user-account-info-btn').addEventListener('click', function () {
+            document.getElementById('user-account-info-section').style.display = 'block';
+            document.getElementById('change-password-section').style.display = 'none';
+            this.classList.add('selected');
+            document.getElementById('change-password-btn').classList.remove('selected');
+        });
+
+        document.getElementById('change-password-btn').addEventListener('click', function () {
+            document.getElementById('change-password-section').style.display = 'block';
+            document.getElementById('user-account-info-section').style.display = 'none';
+            this.classList.add('selected');
+            document.getElementById('user-account-info-btn').classList.remove('selected');
+        });
     </script>
 </body>
 
