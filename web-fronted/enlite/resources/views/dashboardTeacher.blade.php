@@ -9,7 +9,8 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
+            height: 100%;
+            width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -282,15 +283,15 @@
 
 <body>
     <div class="sidebar" id="sidebar">
-        <ul>
-            <li class="active"><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
+    <ul>
+            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="teacherprofile">Profile</a></li>
             <li><a href="#">Notification</a></li>
             <li class="dropdown">
-                <a href="#">Course & Student Management</a>
+                <a href="#">Course Portal & Student Management</a>
                 <div class="dropdown-content">
-                    <a href="#">Course Portal</a>
-                    <a href="#">Course Management</a>
+                    <a href="courseportalteacher">Course Portal</a>
+                    <a href="teachercoursemanagement">Course Management</a>
                 </div>
             </li>
         </ul>

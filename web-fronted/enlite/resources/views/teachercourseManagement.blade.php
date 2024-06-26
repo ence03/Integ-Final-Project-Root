@@ -98,6 +98,7 @@
             padding: 0px 20px 10px 0px;
             border-bottom: 1px solid #ccc;
         }
+
         .top-bar ion-icon {
             font-size: 24px;
             cursor: pointer;
@@ -147,7 +148,6 @@
             color: #000 !important;
         }
 
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -189,12 +189,13 @@
 
         .buttons {
             margin-top: 20px;
-            margin-left: 95rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
         }
 
         button {
             padding: 10px 20px;
-            margin-left: 10px;
             border: none;
             color: #fff;
             background-color: #007BFF;
@@ -223,6 +224,14 @@
             background-color: #FFA300;
         }
 
+        .add-students {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .add-students:hover {
+            background-color: #218838;
+        }
 
         .course-management-p {
             position: flex;
@@ -346,15 +355,15 @@
 
 <body>
     <div class="sidebar" id="sidebar">
-        <ul>
-            <li><a href="{{ route('welcome') }}">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
+    <ul>
+            <li><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="teacherprofile">Profile</a></li>
             <li><a href="#">Notification</a></li>
             <li class="dropdown">
                 <a href="#">Course Portal & Student Management</a>
                 <div class="dropdown-content">
-                    <a href="#">Course Portal</a>
-                    <a href="#">Course Management</a>
+                    <a href="courseportalteacher">Course Portal</a>
+                    <a href="teachercoursemanagement">Course Management</a>
                 </div>
             </li>
         </ul>
@@ -413,6 +422,7 @@
                 </table>
                 <div class="buttons">
                     <button class="drop hidden">Drop</button>
+                    <button class="add-students hidden" onclick="location.href='courseportalteacher'">Add Students</button>
                     <button class="add-course">Add Course</button>
                 </div>
             </div>
@@ -443,14 +453,17 @@
 
         const checkboxes = document.querySelectorAll('.course-checkbox');
         const dropButton = document.querySelector('.drop');
+        const addStudentsButton = document.querySelector('.add-students');
 
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
                 const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
                 if (anyChecked) {
                     dropButton.classList.remove('hidden');
+                    addStudentsButton.classList.remove('hidden');
                 } else {
                     dropButton.classList.add('hidden');
+                    addStudentsButton.classList.add('hidden');
                 }
             });
         });
