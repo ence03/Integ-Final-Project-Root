@@ -160,11 +160,11 @@
         .course-management-container {
             padding: 10px;
             margin-top: 5rem;
-            margin-left: 4rem;
+            margin-left: 9rem;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 110rem;
+            max-width: 99rem;
         }
 
         .course-management-container h1 {
