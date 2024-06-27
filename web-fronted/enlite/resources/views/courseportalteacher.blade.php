@@ -32,7 +32,7 @@
             transition: transform 0.3s ease;
             z-index: 1000;
             overflow-y: auto;
-            margin-top: 4rem;
+            margin-top: 5rem;
         }
 
         .sidebar.active {
@@ -161,11 +161,15 @@
             overflow: auto;
         }
 
+        .main-content.shifted {
+            margin-left: 200px;
+        }
+
         .dashboard-container {
             display: flex;
             flex-direction: column;
             padding: 20px;
-            margin-left: 2rem;
+            margin-left: 3.5rem;
         }
 
         .header-buttons-container {
@@ -221,8 +225,7 @@
         .drop {
             background-color: #dc3545;
             color: #fff;
-            visibility: hidden; /* Hide the button without removing it from the layout */
-            opacity: 0; /* Make the button invisible */
+            display: none;
         }
 
         .popup {
@@ -423,10 +426,14 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-        <li><a href="dashboardteacher">Dashboard</a></li>
+            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
             <li><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
-            <li><a href="teachercoursemanagement">Course Management</a></li>
+            <li class="dropdown">
+                <a href="#">Course & Student Management</a>
+                <div class="dropdown-content">
+                    <a href="courseportalteacher">Course Portal</a>
+                    <a href="teachercoursemanagement">Course Management</a>
                 </div>
             </li>
         </ul>
@@ -448,7 +455,7 @@
         <div class="main-content" id="main-content">
             <div class="dashboard-container">
                 <div class="header-buttons-container">
-                    <h1 class="dashboard-p" id="course-name">Networking 1</h1>
+                    <h1 class="dashboard-p">Networking 1</h1>
                     <div class="search-container">
                         <ion-icon name="search-outline"></ion-icon>
                         <input type="text" placeholder="Search here..." id="search-input">
@@ -468,8 +475,8 @@
                     </tbody>
                 </table>
                 <div class="buttons">
-                    <button class="drop" id="drop-button">Drop</button>
                     <button class="add-student" id="add-student-button">Add Student</button>
+                    <button class="drop" id="drop-button">Drop</button>
                 </div>
             </div>
         </div>
@@ -522,8 +529,7 @@
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-                dropButton.style.visibility = anyChecked ? 'visible' : 'hidden';
-                dropButton.style.opacity = anyChecked ? '1' : '0';
+                dropButton.style.display = anyChecked ? 'block' : 'none';
             });
         });
 
@@ -601,8 +607,7 @@
             checkedBoxes.forEach(checkbox => {
                 checkbox.closest('tr').remove();
             });
-            dropButton.style.visibility = 'hidden';
-            dropButton.style.opacity = '0';
+            dropButton.style.display = 'none';
         });
 
         document.getElementById('search-input').addEventListener('input', function() {
@@ -652,8 +657,7 @@
 
             newRow.querySelector('.student-checkbox').addEventListener('change', function() {
                 const anyChecked = Array.from(document.querySelectorAll('.student-checkbox')).some(checkbox => checkbox.checked);
-                dropButton.style.visibility = anyChecked ? 'visible' : 'hidden';
-                dropButton.style.opacity = anyChecked ? '1' : '0';
+                dropButton.style.display = anyChecked ? 'block' : 'none';
             });
         }
 
@@ -681,16 +685,6 @@
                 notification.classList.remove('active');
             }, 3000);
         }
-
-        // Load the selected course from local storage
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectedCourses = JSON.parse(localStorage.getItem('selectedCourses'));
-            if (selectedCourses && selectedCourses.length > 0) {
-                document.getElementById('course-name').textContent = selectedCourses.join(', ');
-            } else {
-                document.getElementById('course-name').textContent = 'Networking 1';
-            }
-        });
     </script>
 </body>
 
