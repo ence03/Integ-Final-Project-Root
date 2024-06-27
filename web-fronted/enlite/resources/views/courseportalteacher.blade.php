@@ -32,7 +32,7 @@
             transition: transform 0.3s ease;
             z-index: 1000;
             overflow-y: auto;
-            margin-top: 5rem;
+            margin-top: 3.8rem;
         }
 
         .sidebar.active {
@@ -92,6 +92,7 @@
             position: fixed;
             top: 0;
             z-index: 999;
+    
         }
 
         .top-bar ion-icon {
@@ -150,21 +151,6 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            transition: margin-left 0.3s ease;
-            min-height: calc(100vh - 50px);
-            padding-top: 50px;
-            overflow: auto;
-        }
-
-        .main-content.shifted {
-            margin-left: 200px;
-        }
-
         .dashboard-container {
             display: flex;
             flex-direction: column;
@@ -426,7 +412,7 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="dashboardteacher">Dashboard</a></li>
             <li><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
             <li class="dropdown">
