@@ -465,7 +465,6 @@
                             <th>Code</th>
                             <th>Course Name</th>
                             <th>Units</th>
-                            <th>Section</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -475,7 +474,6 @@
                             <td>NTW1</td>
                             <td>Networking 1</td>
                             <td>3</td>
-                            <td>A</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="course-checkbox" data-course-name="Application Development and Emerging Technology"></td>
@@ -483,7 +481,6 @@
                             <td>ADET</td>
                             <td>Application Development and Emerging Technology</td>
                             <td>4</td>
-                            <td>B</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="course-checkbox" data-course-name="Integrative Programming and Technologies"></td>
@@ -491,7 +488,6 @@
                             <td>IPT</td>
                             <td>Integrative Programming and Technologies</td>
                             <td>3</td>
-                            <td>A</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="course-checkbox" data-course-name="Quantitative Methods"></td>
@@ -499,7 +495,6 @@
                             <td>QM</td>
                             <td>Quantitative Methods</td>
                             <td>3</td>
-                            <td>C</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="course-checkbox" data-course-name="Foreign Language"></td>
@@ -507,7 +502,6 @@
                             <td>FL</td>
                             <td>Foreign Language</td>
                             <td>2</td>
-                            <td>D</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" class="course-checkbox" data-course-name="IT Elective 2"></td>
@@ -515,7 +509,6 @@
                             <td>ITE2</td>
                             <td>IT Elective 2</td>
                             <td>3</td>
-                            <td>E</td>
                         </tr>
                     </tbody>
                 </table>
@@ -538,7 +531,6 @@
             <input type="text" id="new-course-code" placeholder="Course Code">
             <input type="text" id="new-course-name" placeholder="Course Name">
             <input type="number" id="new-course-units" placeholder="Units">
-            <input type="text" id="new-course-section" placeholder="Section">
             <button id="submit-course">Submit</button>
         </div>
     </div>
@@ -611,9 +603,8 @@
             const newCourseName = document.getElementById('new-course-name').value.trim();
             const newCourseCode = document.getElementById('new-course-code').value.trim();
             const newCourseUnits = document.getElementById('new-course-units').value.trim();
-            const newCourseSection = document.getElementById('new-course-section').value.trim();
 
-            if (newCourseName && newCourseCode && newCourseUnits && newCourseSection) {
+            if (newCourseName && newCourseCode && newCourseUnits) {
                 const newRow = document.createElement('tr');
                 newRow.innerHTML = `
                     <td><input type="checkbox" class="course-checkbox" data-course-name="${newCourseName}"></td>
@@ -621,7 +612,6 @@
                     <td>${newCourseCode}</td>
                     <td>${newCourseName}</td>
                     <td>${newCourseUnits}</td>
-                    <td>${newCourseSection}</td>
                 `;
                 document.querySelector('#course-table tbody').appendChild(newRow);
 
@@ -638,7 +628,6 @@
                 document.getElementById('new-course-name').value = '';
                 document.getElementById('new-course-code').value = '';
                 document.getElementById('new-course-units').value = '';
-                document.getElementById('new-course-section').value = '';
 
                 // Close the popup
                 popup.classList.remove('active');
