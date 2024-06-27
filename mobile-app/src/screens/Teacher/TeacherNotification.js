@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, Pressable } from "react-native";
+import React, {useState} from "react";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Pressable  } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../../assets/image/logo.png";
 import Modal from 'react-native-modal';
 
-export default function StudentGrade() {
+
+export default function TeacherNotification() {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [pressedItem, setPressedItem] = useState(null);
@@ -30,29 +31,10 @@ export default function StudentGrade() {
         </TouchableOpacity>
         <Image source={Logo} style={styles.logo} />
       </View>
-      <Text style={styles.dashboardText}>Grades</Text>
-      <ScrollView horizontal={true} style={styles.tableContainer}>
-        <View style={styles.table}>
-          <View style={styles.tableHeader}>
-            <Text style={styles.headerText}>#</Text>
-            <Text style={styles.headerText}>Code</Text>
-            <Text style={styles.headerText}>Descriptive</Text>
-            <Text style={styles.headerText}>Midterm</Text>
-            <Text style={styles.headerText}>Final</Text>
-            <Text style={styles.headerText}>Re-Exam</Text>
-          </View>
-          {gradesData.map((item, index) => (
-            <View style={styles.tableRow} key={index}>
-              <Text style={styles.cellText}>{index + 1}</Text>
-              <Text style={styles.cellText}>{item.code}</Text>
-              <Text style={styles.cellText}>{item.descriptive}</Text>
-              <Text style={styles.cellText}>{item.midterm}</Text>
-              <Text style={styles.cellText}>{item.final}</Text>
-              <Text style={styles.cellText}>{item.reexam}</Text>
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      <Text style={styles.dashboardText}>Notification</Text>
+      <View style={styles.grid}>
+        
+      </View>
 
       <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
 
@@ -74,20 +56,6 @@ export default function StudentGrade() {
             }}
           >
             <Text style={pressedItem === 'Course Management' ? styles.menuTextPressed : styles.menuText}>Course Management</Text>
-          </Pressable>
-          <Pressable
-            style={({ pressed }) => [
-              styles.menuItem,
-              pressedItem === 'Grades' && styles.menuItemPressed,
-            ]}
-            onPressIn={() => handlePressIn('Grades')}
-            onPressOut={handlePressOut}
-            onPress={() => {
-              toggleModal();
-              navigation.navigate("SGrade");
-            }}
-          >
-            <Text style={pressedItem === 'Grades' ? styles.menuTextPressed : styles.menuText}>Grades</Text>
           </Pressable>
           <Pressable
             style={({ pressed }) => [
@@ -129,16 +97,6 @@ export default function StudentGrade() {
   );
 }
 
-const gradesData = [
-  { code: "IT123", descriptive: "Networking 1", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 2", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 3", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 4", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 2", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 3", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 4", midterm: 3, final: 3, reexam: 3 },
-];
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -169,38 +127,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     margin: 10,
     fontWeight: "500",
-  },
-  tableContainer: {
-    flex: 1,
-    paddingHorizontal: 10,
-  },
-  table: {
-    // borderWidth: 1,
-    borderColor: "#ccc",
-  },
-  tableHeader: {
-    flexDirection: "row",
-    backgroundColor: "#f1f1f1",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  tableRow: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  headerText: {
-    width: 110, 
-    padding: 5,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  cellText: {
-    width: 110, 
-    height: 50,
-    textAlign: "center",
-    // borderWidth: 1,
-    padding: 10,
   },
   //menu ni sya
   modal: {
@@ -254,7 +180,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fa841a",
     padding: 10,
     borderRadius: 5,
-    marginTop: 300,
+    marginTop: 355,
     borderWidth: 1, 
   },
   logoutText: {

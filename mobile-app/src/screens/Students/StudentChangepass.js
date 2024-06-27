@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, Pressable } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../../assets/image/logo.png";
 import Modal from 'react-native-modal';
 
-export default function StudentGrade() {
+export default function StudentChangepass() {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [pressedItem, setPressedItem] = useState(null);
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -22,6 +24,12 @@ export default function StudentGrade() {
     setPressedItem(null);
   };
 
+  const handleSubmit = () => {
+    // Handle password change logic here
+    console.log("Old Password:", oldPassword);
+    console.log("New Password:", newPassword);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,32 +38,36 @@ export default function StudentGrade() {
         </TouchableOpacity>
         <Image source={Logo} style={styles.logo} />
       </View>
-      <Text style={styles.dashboardText}>Grades</Text>
-      <ScrollView horizontal={true} style={styles.tableContainer}>
-        <View style={styles.table}>
-          <View style={styles.tableHeader}>
-            <Text style={styles.headerText}>#</Text>
-            <Text style={styles.headerText}>Code</Text>
-            <Text style={styles.headerText}>Descriptive</Text>
-            <Text style={styles.headerText}>Midterm</Text>
-            <Text style={styles.headerText}>Final</Text>
-            <Text style={styles.headerText}>Re-Exam</Text>
-          </View>
-          {gradesData.map((item, index) => (
-            <View style={styles.tableRow} key={index}>
-              <Text style={styles.cellText}>{index + 1}</Text>
-              <Text style={styles.cellText}>{item.code}</Text>
-              <Text style={styles.cellText}>{item.descriptive}</Text>
-              <Text style={styles.cellText}>{item.midterm}</Text>
-              <Text style={styles.cellText}>{item.final}</Text>
-              <Text style={styles.cellText}>{item.reexam}</Text>
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      <Text style={styles.dashboardText}>Change Password</Text>
+      <View style={styles.profileContainer}>
+        <Icon name="user-circle" size={100} color="#000" />
+        <Text style={styles.nameText}>CHRISTIAN JAY ABRAGAN</Text>
+        <Text style={styles.roleText}>BSIT 3R2</Text>
+        <Text style={styles.idText}>2021301831</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Old Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter Old Password"
+          secureTextEntry={true}
+          value={oldPassword}
+          onChangeText={setOldPassword}
+        />
+        <Text style={styles.label}>New Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter New Password"
+          secureTextEntry={true}
+          value={newPassword}
+          onChangeText={setNewPassword}
+        />
+      </View>
+      <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+        <Text style={styles.submitButtonText}>Submit</Text>
+      </TouchableOpacity>
 
-      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
-
+      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal} style={styles.modal}>
         <View style={styles.modalContent}>
           <View style={styles.modalHeader}>
             <Icon name="user-circle" size={50} color="#000" />
@@ -101,7 +113,7 @@ export default function StudentGrade() {
               navigation.navigate("StudentNotification");
             }}
           >
-            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Notification</Text>
+            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Profile</Text>
           </Pressable>
           <Pressable
             style={({ pressed }) => [
@@ -129,16 +141,6 @@ export default function StudentGrade() {
   );
 }
 
-const gradesData = [
-  { code: "IT123", descriptive: "Networking 1", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 2", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 3", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 4", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 2", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 3", midterm: 3, final: 3, reexam: 3 },
-  { code: "IT123", descriptive: "Networking 4", midterm: 3, final: 3, reexam: 3 },
-];
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -156,8 +158,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   logo: {
-    width: 150, 
-    height: 50, 
+    width: 150,
+    height: 50,
     resizeMode: "contain",
     alignItems: "center",
   },
@@ -170,44 +172,61 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "500",
   },
-  tableContainer: {
-    flex: 1,
+  profileContainer: {
+    alignItems: "center",
+    marginBottom: 40,
+  },
+  nameText: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  roleText: {
+    fontSize: 18,
+    color: "#888",
+  },
+  idText: {
+    fontSize: 16,
+    color: "#888",
+  },
+  inputContainer: {
+    marginBottom: 40,
+    marginLeft: 10,
+    marginRight: 10,
+
+  },
+  label: {
+    fontSize: 16,
+    color: "#000",
+    marginBottom: 5,
+  },
+  input: {
+    height: 40,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 20,
     paddingHorizontal: 10,
   },
-  table: {
-    // borderWidth: 1,
-    borderColor: "#ccc",
-  },
-  tableHeader: {
-    flexDirection: "row",
-    backgroundColor: "#f1f1f1",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  tableRow: {
-    flexDirection: "row",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  headerText: {
-    width: 110, 
-    padding: 5,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  cellText: {
-    width: 110, 
-    height: 50,
-    textAlign: "center",
-    // borderWidth: 1,
+  submitButton: {
+    backgroundColor: "#024089",
     padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+    marginLeft: 10,
+    marginRight: 10,
+    borderWidth: 1,
+    elevation: 5,
   },
-  //menu ni sya
+  submitButtonText: {
+    color: "#fff",
+    fontSize: 18,
+  },
   modal: {
     justifyContent: 'flex-start',
     margin: 0,
     marginRight: 50,
-    marginTop: 45, 
+    marginTop: 45,
   },
   modalContent: {
     backgroundColor: "white",
@@ -255,7 +274,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 300,
-    borderWidth: 1, 
+    borderWidth: 1,
   },
   logoutText: {
     color: "#fff",
