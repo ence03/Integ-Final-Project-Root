@@ -221,7 +221,8 @@
         .drop {
             background-color: #dc3545;
             color: #fff;
-            display: none;
+            visibility: hidden; /* Hide the button without removing it from the layout */
+            opacity: 0; /* Make the button invisible */
         }
 
         .popup {
@@ -471,8 +472,8 @@
                     </tbody>
                 </table>
                 <div class="buttons">
-                    <button class="add-student" id="add-student-button">Add Student</button>
                     <button class="drop" id="drop-button">Drop</button>
+                    <button class="add-student" id="add-student-button">Add Student</button>
                 </div>
             </div>
         </div>
@@ -525,7 +526,8 @@
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-                dropButton.style.display = anyChecked ? 'block' : 'none';
+                dropButton.style.visibility = anyChecked ? 'visible' : 'hidden';
+                dropButton.style.opacity = anyChecked ? '1' : '0';
             });
         });
 
@@ -603,7 +605,8 @@
             checkedBoxes.forEach(checkbox => {
                 checkbox.closest('tr').remove();
             });
-            dropButton.style.display = 'none';
+            dropButton.style.visibility = 'hidden';
+            dropButton.style.opacity = '0';
         });
 
         document.getElementById('search-input').addEventListener('input', function() {
@@ -653,7 +656,8 @@
 
             newRow.querySelector('.student-checkbox').addEventListener('change', function() {
                 const anyChecked = Array.from(document.querySelectorAll('.student-checkbox')).some(checkbox => checkbox.checked);
-                dropButton.style.display = anyChecked ? 'block' : 'none';
+                dropButton.style.visibility = anyChecked ? 'visible' : 'hidden';
+                dropButton.style.opacity = anyChecked ? '1' : '0';
             });
         }
 
