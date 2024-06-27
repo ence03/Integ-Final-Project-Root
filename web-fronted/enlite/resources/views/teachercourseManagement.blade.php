@@ -146,7 +146,6 @@
             display: block;
         }
 
-
         .main-content {
             flex: 1;
             display: flex;
@@ -606,6 +605,20 @@
         popupBackground.addEventListener('click', () => {
             popup.classList.remove('active');
             popupBackground.classList.remove('active');
+        });
+
+        // Function to handle drop button click
+        dropButton.addEventListener('click', () => {
+            const checkedCheckboxes = Array.from(document.querySelectorAll('.course-checkbox')).filter(checkbox => checkbox.checked);
+            checkedCheckboxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                row.remove();
+            });
+            updateButtonVisibility();
+            // Update localStorage
+            const remainingCourses = Array.from(document.querySelectorAll('.course-checkbox'))
+                .map(checkbox => checkbox.getAttribute('data-course-name'));
+            localStorage.setItem('selectedCourses', JSON.stringify(remainingCourses));
         });
 
         // Initial button visibility update
