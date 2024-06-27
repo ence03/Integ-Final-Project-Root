@@ -299,6 +299,75 @@
             background-color: rgba(116, 175, 245, 0.5);
         }
 
+        .popup-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            width: 300px;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .popup-header ion-icon {
+            cursor: pointer;
+        }
+
+        .popup-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .popup-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .popup-form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #FEC619;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup-form button:hover {
+            background-color: #FFA300;
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -367,8 +436,6 @@
             <li><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
             <li><a href="teachercoursemanagement">Course Management</a></li>
-                </div>
-            </li>
         </ul>
     </div>
     <div class="content-container">
@@ -389,7 +456,7 @@
         <div id="main-content">
             <div class="course-management-container">
                 <h1>Course Management</h1>
-                <table>
+                <table id="course-table">
                     <thead>
                         <tr>
                             <th></th>
@@ -431,6 +498,19 @@
             </div>
         </div>
     </div>
+
+    <div class="popup-background" id="popup-background"></div>
+    <div class="popup" id="popup">
+        <div class="popup-header">
+            Add Course
+            <ion-icon name="close-outline" id="popup-close"></ion-icon>
+        </div>
+        <div class="popup-form">
+            <input type="text" id="new-course-name" placeholder="Course Name">
+            <button id="submit-course">Submit</button>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
         document.getElementById('burger-menu').addEventListener('click', function () {
@@ -458,23 +538,78 @@
         const dropButton = document.querySelector('.drop');
         const addStudentsButton = document.querySelector('.add-students');
 
+        function updateButtonVisibility() {
+            const anyChecked = Array.from(document.querySelectorAll('.course-checkbox')).some(checkbox => checkbox.checked);
+            if (anyChecked) {
+                dropButton.classList.remove('hidden');
+                addStudentsButton.classList.remove('hidden');
+            } else {
+                dropButton.classList.add('hidden');
+                addStudentsButton.classList.add('hidden');
+            }
+        }
+
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
-                const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-                if (anyChecked) {
-                    dropButton.classList.remove('hidden');
-                    addStudentsButton.classList.remove('hidden');
-                } else {
-                    dropButton.classList.add('hidden');
-                    addStudentsButton.classList.add('hidden');
-                }
-
-                const checkedCourses = Array.from(checkboxes)
+                updateButtonVisibility();
+                const checkedCourses = Array.from(document.querySelectorAll('.course-checkbox'))
                     .filter(checkbox => checkbox.checked)
                     .map(checkbox => checkbox.getAttribute('data-course-name'));
                 localStorage.setItem('selectedCourses', JSON.stringify(checkedCourses));
             });
         });
+
+        const addCourseButton = document.querySelector('.add-course');
+        const popup = document.getElementById('popup');
+        const popupBackground = document.getElementById('popup-background');
+        const popupClose = document.getElementById('popup-close');
+        const submitCourseButton = document.getElementById('submit-course');
+
+        addCourseButton.addEventListener('click', () => {
+            popup.classList.add('active');
+            popupBackground.classList.add('active');
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('active');
+            popupBackground.classList.remove('active');
+        });
+
+        submitCourseButton.addEventListener('click', () => {
+            const newCourseName = document.getElementById('new-course-name').value.trim();
+            if (newCourseName) {
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td><input type="checkbox" class="course-checkbox" data-course-name="${newCourseName}"></td>
+                    <td>${newCourseName}</td>
+                `;
+                document.querySelector('#course-table tbody').appendChild(newRow);
+
+                const newCheckbox = newRow.querySelector('.course-checkbox');
+                newCheckbox.addEventListener('change', () => {
+                    updateButtonVisibility();
+                    const checkedCourses = Array.from(document.querySelectorAll('.course-checkbox'))
+                        .filter(checkbox => checkbox.checked)
+                        .map(checkbox => checkbox.getAttribute('data-course-name'));
+                    localStorage.setItem('selectedCourses', JSON.stringify(checkedCourses));
+                });
+
+                // Clear the input field
+                document.getElementById('new-course-name').value = '';
+
+                // Close the popup
+                popup.classList.remove('active');
+                popupBackground.classList.remove('active');
+            }
+        });
+
+        popupBackground.addEventListener('click', () => {
+            popup.classList.remove('active');
+            popupBackground.classList.remove('active');
+        });
+
+        // Initial button visibility update
+        updateButtonVisibility();
     </script>
 </body>
 
