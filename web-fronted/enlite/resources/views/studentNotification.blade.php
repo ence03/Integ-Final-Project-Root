@@ -149,6 +149,131 @@
         }
 
 
+        .profile-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            width: 80%;
+            height: 140%;
+            margin-top: 5rem;
+            margin-left: 8rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-header div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+        }
+
+        .profile-header p {
+            margin: 0;
+            color: #666;
+        }
+
+        .user-details {
+            padding: 30px;
+            background-color: #e8f0fe;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 15rem;
+
+        }
+
+        .user-details h3 {
+            margin-top: 0;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+        }
+
+        .user-details p span {
+            font-weight: bold;
+        }
+
+        .notif-details p {
+            border-bottom: 1px solid #ccc;
+        }
+
+
+        .notification-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 70%;
+            margin-top: 4rem;
+            height: auto;
+            margin-left: 15rem;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .mark-read {
+            background-color: #FEC619;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .mark-read:hover {
+            background-color: rgba(116, 175, 245, 0.5);
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+            transition: background-color 0.3s ease;
+        }
+
+        .notification-item.unread {
+            background-color: #e8f0fe;
+        }
+
+        .notification-item ion-icon {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        .notification-item p {
+            margin: 0;
+            color: #333;
+        }
+
+        .notification-header div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notification-header h2 {
+            margin: 0;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
@@ -225,6 +350,32 @@
         </div>
 
 
+        <div class="notification-container">
+            <div class="notification-header">
+                <div>
+                    <h2>Notifications</h2>
+                </div>
+                <button class="mark-read" onclick="markAllAsRead()">Mark All as Read</button>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You successfully graded Balagulan in the subject Networking 1.</p>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You successfully graded Deguino in the subject Applications Development.</p>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You successfully graded Ratunil in the subject Quantitative Methods.</p>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You successfully graded Quismondo in the subject Networking 2.</p>
+            </div>
+        </div>
+
+
     </div>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
@@ -247,6 +398,13 @@
                     }
                 }
             }
+        }
+
+        function markAllAsRead() {
+            const notifications = document.querySelectorAll('.notification-item');
+            notifications.forEach(notification => {
+                notification.classList.remove('unread');
+            });
         }
     </script>
 </body>
