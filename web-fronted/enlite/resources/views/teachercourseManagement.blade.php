@@ -436,7 +436,7 @@
             <li><a href="dashboardteacher">Dashboard</a></li>
             <li><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
-            <li><a href="teachercoursemanagement">Course Management</a></li>
+            <li class="active"><a href="teachercoursemanagement">Course Management</a></li>
         </ul>
     </div>
     <div class="content-container">
