@@ -182,7 +182,7 @@
             border-radius: 20px;
 
         }
-       
+
 
         .profile-card {
             flex: 1;
@@ -347,16 +347,12 @@
 
 <body>
     <div class="sidebar" id="sidebar">
-    <ul>
+        <ul>
             <li><a href="dashboardteacher">Dashboard</a></li>
             <li class="active"><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
             <li class="dropdown">
-                <a href="#">Course & Student Management</a>
-                <div class="dropdown-content">
-                    <a href="courseportalteacher">Course Portal</a>
-                    <a href="teachercoursemanagement">Course Management</a>
-                </div>
+                <a href="teachercoursemanagement">Course & Student Management</a>
             </li>
         </ul>
     </div>
@@ -370,7 +366,7 @@
                 <ion-icon name="person-circle" id="user-menu" style="color: #000; margin-left:5rem;"></ion-icon>
                 <div class="dropdown-content">
                     <a href="teacherprofile">Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="login">Logout</a>
                 </div>
             </div>
         </div>
