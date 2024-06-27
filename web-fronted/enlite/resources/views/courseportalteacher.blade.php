@@ -423,14 +423,10 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li class="active"><a href="dashboardteacher">Dashboard</a></li>
+        <li><a href="dashboardteacher">Dashboard</a></li>
             <li><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
-            <li class="dropdown">
-                <a href="#">Course & Student Management</a>
-                <div class="dropdown-content">
-                    <a href="courseportalteacher">Course Portal</a>
-                    <a href="teachercoursemanagement">Course Management</a>
+            <li><a href="teachercoursemanagement">Course Management</a></li>
                 </div>
             </li>
         </ul>
@@ -452,7 +448,7 @@
         <div class="main-content" id="main-content">
             <div class="dashboard-container">
                 <div class="header-buttons-container">
-                    <h1 class="dashboard-p">Networking 1</h1>
+                    <h1 class="dashboard-p" id="course-name">Networking 1</h1>
                     <div class="search-container">
                         <ion-icon name="search-outline"></ion-icon>
                         <input type="text" placeholder="Search here..." id="search-input">
@@ -685,6 +681,16 @@
                 notification.classList.remove('active');
             }, 3000);
         }
+
+        // Load the selected course from local storage
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedCourses = JSON.parse(localStorage.getItem('selectedCourses'));
+            if (selectedCourses && selectedCourses.length > 0) {
+                document.getElementById('course-name').textContent = selectedCourses.join(', ');
+            } else {
+                document.getElementById('course-name').textContent = 'Networking 1';
+            }
+        });
     </script>
 </body>
 

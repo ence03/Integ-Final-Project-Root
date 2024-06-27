@@ -363,14 +363,10 @@
 <body>
     <div class="sidebar" id="sidebar">
         <ul>
-            <li ><a href="dashboardteacher">Dashboard</a></li>
+            <li><a href="dashboardteacher">Dashboard</a></li>
             <li><a href="teacherprofile">Profile</a></li>
             <li><a href="teachernotification">Notification</a></li>
-            <li class="dropdown">
-                <a href="#">Course & Student Management</a>
-                <div class="dropdown-content">
-                    <a href="courseportalteacher">Course Portal</a>
-                    <a href="teachercoursemanagement">Course Management</a>
+            <li><a href="teachercoursemanagement">Course Management</a></li>
                 </div>
             </li>
         </ul>
@@ -402,35 +398,34 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input type="checkbox" class="course-checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox" data-course-name="Networking 1"></td>
                             <td>Networking 1</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="course-checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox" data-course-name="Application Development and Emerging Technology"></td>
                             <td>Application Development and Emerging Technology</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="course-checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox" data-course-name="Integrative Programming and Technologies"></td>
                             <td>Integrative Programming and Technologies</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="course-checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox" data-course-name="Quantitative Methods"></td>
                             <td>Quantitative Methods</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="course-checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox" data-course-name="Foreign Language"></td>
                             <td>Foreign Language</td>
                         </tr>
                         <tr>
-                            <td><input type="checkbox" class="course-checkbox"></td>
+                            <td><input type="checkbox" class="course-checkbox" data-course-name="IT Elective 2"></td>
                             <td>IT Elective 2</td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="buttons">
                     <button class="drop hidden">Drop</button>
-                    <button class="add-students hidden" onclick="location.href='courseportalteacher'">Add
-                        Students</button>
+                    <button class="add-students hidden" onclick="location.href='courseportalteacher'">Add Students</button>
                     <button class="add-course">Add Course</button>
                 </div>
             </div>
@@ -473,6 +468,11 @@
                     dropButton.classList.add('hidden');
                     addStudentsButton.classList.add('hidden');
                 }
+
+                const checkedCourses = Array.from(checkboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.getAttribute('data-course-name'));
+                localStorage.setItem('selectedCourses', JSON.stringify(checkedCourses));
             });
         });
     </script>
