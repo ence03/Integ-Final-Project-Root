@@ -87,34 +87,72 @@ export default function CourseManagement() {
         </TouchableOpacity>
       </View>
 
-      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal} style={styles.modal}>
+      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
+
         <View style={styles.modalContent}>
           <View style={styles.modalHeader}>
             <Icon name="user-circle" size={50} color="#000" />
             <Text style={styles.modalName}>CHRISTIAN JAY ABRAGAN</Text>
           </View>
-          {['Course Management', 'Grades', 'Notification', 'Settings'].map(item => (
-            <Pressable
-              key={item}
-              style={({ pressed }) => [
-                styles.menuItem,
-                pressedItem === item && styles.menuItemPressed,
-              ]}
-              onPressIn={() => handlePressIn(item)}
-              onPressOut={handlePressOut}
-              onPress={() => {
-                toggleModal();
-                navigation.navigate(item.replace(' ', ''));
-              }}
-            >
-              <Text
-                style={pressedItem === item ? styles.menuTextPressed : styles.menuText}
-              >
-                {item}
-              </Text>
-            </Pressable>
-          ))}
-          <TouchableOpacity style={styles.logoutButton} onPress={toggleModal}>
+          <Pressable
+            style={({ pressed }) => [
+              styles.menuItem,
+              pressedItem === 'Course Management' && styles.menuItemPressed,
+            ]}
+            onPressIn={() => handlePressIn('Course Management')}
+            onPressOut={handlePressOut}
+            onPress={() => {
+              toggleModal();
+              navigation.navigate("CourseManagement");
+            }}
+          >
+            <Text style={pressedItem === 'Course Management' ? styles.menuTextPressed : styles.menuText}>Course Management</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.menuItem,
+              pressedItem === 'Grades' && styles.menuItemPressed,
+            ]}
+            onPressIn={() => handlePressIn('Grades')}
+            onPressOut={handlePressOut}
+            onPress={() => {
+              toggleModal();
+              navigation.navigate("SGrade");
+            }}
+          >
+            <Text style={pressedItem === 'Grades' ? styles.menuTextPressed : styles.menuText}>Grades</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.menuItem,
+              pressedItem === 'Notification' && styles.menuItemPressed,
+            ]}
+            onPressIn={() => handlePressIn('Notification')}
+            onPressOut={handlePressOut}
+            onPress={() => {
+              toggleModal();
+              navigation.navigate("StudentNotification");
+            }}
+          >
+            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Notification</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.menuItem,
+              pressedItem === 'Settings' && styles.menuItemPressed,
+            ]}
+            onPressIn={() => handlePressIn('Settings')}
+            onPressOut={handlePressOut}
+            onPress={() => {
+              toggleModal();
+              navigation.navigate("Settings");
+            }}
+          >
+            <Text style={pressedItem === 'Settings' ? styles.menuTextPressed : styles.menuText}>Settings</Text>
+          </Pressable>
+          <TouchableOpacity style={styles.logoutButton} onPress={() => {
+            toggleModal(); navigation.navigate("LoginScreen")
+          }}>
             <Icon name="sign-out" size={20} color="#fff" />
             <Text style={styles.logoutText}>LOG OUT</Text>
           </TouchableOpacity>
@@ -204,11 +242,13 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
   dropButton: {
-    backgroundColor: "#024089",
+    backgroundColor: "#fa841a",
     paddingVertical: 10,
     borderRadius: 5,
     alignItems: "center",
     marginTop: 10,
+    borderWidth: 1, 
+    elevation: 5,
   },
   dropButtonText: {
     color: "#fff",
@@ -280,6 +320,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 300,
+    borderWidth: 1, 
   },
   logoutText: {
     color: "#fff",

@@ -32,7 +32,8 @@ export default function Dashboard() {
       </View>
       <Text style={styles.dashboardText}>Dashboard</Text>
       <View style={styles.grid}>
-        <TouchableOpacity style={[styles.card, styles.profileCard]}>
+        <TouchableOpacity style={[styles.card, styles.profileCard]}
+        onPress={() => navigation.navigate("StudentProfile")}>
           <Icon name="user" size={52} color="#fff" />
           <Text style={styles.cardText}>PROFILE</Text>
         </TouchableOpacity>
@@ -119,7 +120,7 @@ export default function Dashboard() {
             <Text style={pressedItem === 'Settings' ? styles.menuTextPressed : styles.menuText}>Settings</Text>
           </Pressable>
           <TouchableOpacity style={styles.logoutButton} onPress={() => {
-            toggleModal();
+            toggleModal(); navigation.navigate("LoginScreen")
           }}>
             <Icon name="sign-out" size={20} color="#fff" />
             <Text style={styles.logoutText}>LOG OUT</Text>
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 10,
     elevation: 10,
-    borderWidth: 0.3,
+    borderWidth: 1,
     borderColor: "#000",
   },
   profileCard: {
@@ -257,6 +258,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     marginTop: 300,
+    borderWidth: 1, 
   },
   logoutText: {
     color: "#fff",

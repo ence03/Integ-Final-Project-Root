@@ -9,10 +9,13 @@ import TeacherDashboard from "./src/screens/Teacher/TeacherDashboard";
 import TeacherCourseManagement from "./src/screens/Teacher/TeacherCourse&StudentManagement";
 import StudentGrade from "./src/screens/Students/StudentGrade";
 import StudentNotification from "./src/screens/Students/StudentNotification";
+import TeacherNotification from "./src/screens/Teacher/TeacherNotification";
 import EnrolledStudents from "./src/screens/Teacher/EnrolledStudents";
-import AddStudent from "./src/screens/Teacher/AddStudent";
-
-
+import AddStudents from "./src/screens/Teacher/AddStudent";
+import StudentProfile from "./src/screens/Students/StudentProfile";
+import TeacherProfile from "./src/screens/Teacher/TeacherProfile";
+import StudentChangepass from "./src/screens/Students/StudentChangepass";
+import TeacherChangepass from "./src/screens/Teacher/TeacherChangepass";
 
 const Stack = createStackNavigator();
 
@@ -21,7 +24,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Login"
+          name="LoginScreen"
           component={LoginScreen}
           options={{ headerShown: false }}
         />
@@ -33,6 +36,21 @@ export default function App() {
         <Stack.Screen
           name="StudentNotification"
           component={StudentNotification}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TeacherNotification"
+          component={TeacherNotification}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="StudentChangepass"
+          component={StudentChangepass}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TeacherChangepass"
+          component={TeacherChangepass}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -60,12 +78,21 @@ export default function App() {
           component={EnrolledStudents}
           options={{ headerShown: false }}
         />
-         <Stack.Screen
-          name="AddStudent"
-          component={AddStudent}
+        <Stack.Screen
+          name="AddStudents"
+          component={AddStudents}
           options={{ headerShown: false }}
         />
-
+        <Stack.Screen
+          name="StudentProfile"
+          component={StudentProfile}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TeacherProfile"
+          component={TeacherProfile}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
