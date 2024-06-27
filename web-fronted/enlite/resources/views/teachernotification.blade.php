@@ -13,10 +13,12 @@
             width: 100%;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+
         }
 
         .sidebar {
-            width: 200px;
+            width: 250px;
             background-color: #fff;
             color: #fff;
             display: flex;
@@ -120,11 +122,12 @@
             display: none;
             position: absolute;
             background-color: #fff;
-            min-width: 120px;
+            min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
             right: 0;
             top: 100%;
+            border-radius: 8px;
         }
 
         .dropdown-content a {
@@ -346,15 +349,19 @@
             </div>
             <div class="notification-item unread">
                 <ion-icon name="mail-outline"></ion-icon>
-                <p>You have successfully graded Balagulan in the subject Networking 1.</p>
+                <p>You successfully graded Balagulan in the subject Networking 1.</p>
             </div>
             <div class="notification-item unread">
                 <ion-icon name="mail-outline"></ion-icon>
-                <p>You have successfully graded Deguino in the subject Applications Development.</p>
+                <p>You successfully graded Deguino in the subject Applications Development.</p>
             </div>
             <div class="notification-item unread">
                 <ion-icon name="mail-outline"></ion-icon>
-                <p>You have successfully graded Ratunil in the subject Quantitative Methods.</p>
+                <p>You successfully graded Ratunil in the subject Quantitative Methods.</p>
+            </div>
+            <div class="notification-item unread">
+                <ion-icon name="mail-outline"></ion-icon>
+                <p>You successfully graded Quismondo in the subject Networking 2.</p>
             </div>
         </div>
 
