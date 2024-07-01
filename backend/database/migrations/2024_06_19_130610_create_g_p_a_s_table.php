@@ -15,7 +15,6 @@ return new class extends Migration
             $table->bigIncrements('GPAID')->primary();
                 $table->unsignedBigInteger('StudentID'); // Foreign key column
                 $table->float('GPA');
-                $table->string('Remarks', 50);
                 
                 
                 $table->foreign('StudentID')->references('StudentID')->on('students')->onDelete('cascade');
