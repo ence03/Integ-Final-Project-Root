@@ -96,6 +96,111 @@
             flex-grow: 1;
         }
 
+        @media (max-width: 360px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .login-form {
+                margin-left: 0;
+                width: 90%;
+                padding: 20px;
+            }
+            .login-form button {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 361px) and (max-width: 720px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .login-form {
+                margin-left: 0;
+                margin-right: 0;
+                width: 60%;
+                padding: 20px;
+            }
+            .login-form button {
+                margin-left: 0;
+                width: 40%;
+            }
+        }
+
+        @media (min-width: 721px) and (max-width: 1366px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .login-form {
+                margin-left: 20px;
+                width: 100%;
+                padding: 38px;
+            }
+
+            .login-form button {
+                margin-left: 3.1rem;
+                width: 60%;
+            }
+        }
+
+        @media (min-width: 1367px) and (max-width: 1920px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .login-form {
+                margin-left: 30px;
+                width: 70%;
+                padding: 40px;
+            }
+            .login-form button {
+                margin-left: 4.1rem;
+                width: 60%;
+            }
+        }
+
+        @media (min-width: 1921px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .login-form {
+                margin-left: 40px;
+                width: 75%;
+                padding: 50px;
+            }
+            .login-form button {
+                margin-left: 4.1rem;
+                width: 60%;
+            }
+        }
+
+        @media (min-width: 1440px) and (max-width: 1919px) {
+            .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .login-form {
+                display: center;
+                margin-left: 30px;
+                width: 75%;
+                padding: 40px;
+            }
+            .login-form button {
+                margin-left: 4.1rem;
+                width: 60%;
+            }
+        }
+
     </style>
 </head>
 <body>
