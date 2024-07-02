@@ -18,6 +18,7 @@ return new class extends Migration
                 $table->unsignedBigInteger('Course_InstructorID');
                 $table->float('Midterm');
                 $table->float('Final');
+                $table->string('Remarks', 50);
                 
 
                 
