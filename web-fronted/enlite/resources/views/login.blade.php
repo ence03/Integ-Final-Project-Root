@@ -144,7 +144,7 @@
             }
 
             .login-form button {
-                margin-left: 3.1rem;
+                margin-left: 3.3rem;
                 width: 60%;
             }
         }
@@ -158,10 +158,10 @@
             .login-form {
                 margin-left: 30px;
                 width: 70%;
-                padding: 40px;
+                padding: 50px;
             }
             .login-form button {
-                margin-left: 4.1rem;
+                margin-left: 4rem;
                 width: 60%;
             }
         }
@@ -178,7 +178,7 @@
                 padding: 50px;
             }
             .login-form button {
-                margin-left: 4.1rem;
+                margin-left: 4rem;
                 width: 60%;
             }
         }
@@ -193,10 +193,10 @@
                 display: center;
                 margin-left: 30px;
                 width: 75%;
-                padding: 40px;
+                padding: 50px;
             }
             .login-form button {
-                margin-left: 4.1rem;
+                margin-left: 4rem;
                 width: 60%;
             }
         }
