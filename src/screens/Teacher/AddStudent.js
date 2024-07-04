@@ -1,33 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet, Image, Pressable} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Pressable} from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Logo from "../../../assets/image/logo.png";
 import { Checkbox } from 'expo-checkbox';
 import Icon from "react-native-vector-icons/FontAwesome";
 import Modal from 'react-native-modal';
 
 
-const EnrolledStudents = () => {
+const AddStudents = () => {
     const [students, setStudents] = useState([]);
-    const [search, setSearch] = useState('');
     const [selectedStudents, setSelectedStudents] = useState([]);
     const navigation = useNavigation();
+    const route = useRoute();
+    const { onEnroll } = route.params;
     const [isModalVisible, setModalVisible] = useState(false);
     const [pressedItem, setPressedItem] = useState(null);
 
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const handlePressIn = (item) => {
+    setPressedItem(item);
+  };
+
+  const handlePressOut = () => {
+    setPressedItem(null);
+  };
+
     useEffect(() => {
         const mockData = [
-            { id: '1', LastName: "Abragan", FirstName: "Jay", MiddleName: "Olats" },
-            { id: '2', LastName: "Yamba", FirstName: "Rach", MiddleName: "Koi" },
-            { id: '3', LastName: "Quismundo", FirstName: "Nest", MiddleName: "Bato" },
-            { id: '4', LastName: "Justalero", FirstName: "Earl", MiddleName: "Omay" },
+            { id: '5', LastName: "Doe", FirstName: "John", MiddleName: "A" },
+            { id: '6', LastName: "Smith", FirstName: "Anna", MiddleName: "B" },
+            { id: '7', LastName: "Taylor", FirstName: "James", MiddleName: "C" },
+            { id: '8', LastName: "Brown", FirstName: "Lisa", MiddleName: "D" },
         ];
         setStudents(mockData);
     }, []);
-
-    const handleSearch = (text) => {
-        setSearch(text);
-    };
 
     const handleSelect = (student) => {
         setSelectedStudents((prev) => {
@@ -39,27 +48,11 @@ const EnrolledStudents = () => {
         });
     };
 
-    const handleDelete = () => {
-        const remainingStudents = students.filter(student => !selectedStudents.includes(student.id));
-        setStudents(remainingStudents);
-        setSelectedStudents([]);
+    const handleEnroll = () => {
+        const newStudents = students.filter(student => selectedStudents.includes(student.id));
+        onEnroll(newStudents);
+        navigation.goBack();
     };
-
-    const handleEnroll = (newStudents) => {
-        setStudents((prevStudents) => [...prevStudents, ...newStudents]);
-    };
-
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-      };
-    
-      const handlePressIn = (item) => {
-        setPressedItem(item);
-      };
-    
-      const handlePressOut = () => {
-        setPressedItem(null);
-      };
 
     return (
         <View style={styles.container}>
@@ -69,13 +62,7 @@ const EnrolledStudents = () => {
                 </TouchableOpacity>
                 <Image source={Logo} style={styles.logo} />
             </View>
-            <Text style={styles.dashboardText}>Enrolled Students</Text>
-            <TextInput
-                style={styles.searchBar}
-                placeholder="Search by ID or Name"
-                value={search}
-                onChangeText={handleSearch}
-            />
+            <Text style={styles.dashboardText}>Add Students</Text>
             <ScrollView style={styles.tableContainer}>
                 <View style={styles.tableHeader}>
                     <Text style={[styles.tableHeaderText, styles.idColumn]}>ID</Text>
@@ -83,10 +70,7 @@ const EnrolledStudents = () => {
                     <Text style={[styles.tableHeaderText, styles.nameColumn]}>First Name</Text>
                     <Text style={[styles.tableHeaderText, styles.nameColumn]}>Middle Name</Text>
                 </View>
-                {students.filter(student =>
-                    student.id.includes(search) ||
-                    (student.LastName + ' ' + student.FirstName + ' ' + student.MiddleName).toLowerCase().includes(search.toLowerCase())
-                ).map((student, index) => (
+                {students.map((student, index) => (
                     <View key={index} style={styles.tableRow}>
                         <Checkbox
                             value={selectedStudents.includes(student.id)}
@@ -99,19 +83,12 @@ const EnrolledStudents = () => {
                         <Text style={[styles.tableCell, styles.nameColumn]}>{student.MiddleName}</Text>
                     </View>
                 ))}
-
+            </ScrollView>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.dropButton} onPress={handleDelete}>
-                    <Text style={styles.dropButtonText}>Drop</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    style={styles.addButton} 
-                    onPress={() => navigation.navigate('AddStudents', { onEnroll: handleEnroll })}>
-                    <Text style={styles.addButtonText}>Add Student</Text>
+                <TouchableOpacity style={styles.enrollButton} onPress={handleEnroll}>
+                    <Text style={styles.enrollButtonText}>Enroll</Text>
                 </TouchableOpacity>
             </View>
-            </ScrollView>
-            
 
             <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
 
@@ -163,9 +140,9 @@ const EnrolledStudents = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-      },
-      header: {
+        backgroundColor: '#fff',
+    },
+    header: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
@@ -175,21 +152,13 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "#ccc",
         marginTop: 20,
-      },
-      logo: {
-        width: 150, 
-        height: 50, 
+    },
+    logo: {
+        width: 150,
+        height: 50,
         resizeMode: "contain",
         alignItems: "center",
-      },
-      menuButton: {
-        position: "absolute",
-        left: 10,
-      },
-      title: {
-        fontSize: 24,
-        fontWeight: "bold",
-      },
+    },
     menuButton: {
         position: "absolute",
         left: 10,
@@ -198,15 +167,6 @@ const styles = StyleSheet.create({
         fontSize: 18,
         margin: 10,
         fontWeight: "500",
-    },
-    searchBar: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 20,
-        paddingLeft: 8,
-        marginLeft: 10,
-        marginRight: 10,
     },
     tableContainer: {
         marginBottom: 10,
@@ -240,34 +200,22 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 200,
         marginLeft: 10,
         marginRight: 10,
     },
-    dropButton: {
-        backgroundColor: "#fa841a",
-        paddingVertical: 10,
-        borderRadius: 5,
-        alignItems: "center",
-        elevation: 5,
-        borderWidth: 1,
-        marginTop: 70,
-    },
-    addButton: {
+    enrollButton: {
         backgroundColor: "#024089",
         paddingVertical: 10,
         borderRadius: 5,
         alignItems: "center",
-        elevation: 5,
+        width: '100%',
         borderWidth: 1,
-        marginTop: 10,
-        marginBottom: 20  ,
+        elevation: 5, 
     },
-    dropButtonText: {
-        color: "#fff",
-        fontSize: 18,
-        fontWeight: "bold",
-    },
-    addButtonText: {
+    enrollButtonText: {
         color: "#fff",
         fontSize: 18,
         fontWeight: "bold",
@@ -339,4 +287,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EnrolledStudents;
+export default AddStudents;

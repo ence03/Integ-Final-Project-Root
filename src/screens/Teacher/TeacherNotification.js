@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Pressable } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../../assets/image/logo.png";
 import Modal from 'react-native-modal';
 
-export default function TeacherChangepass() {
+export default function TeacherNotification() {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [pressedItem, setPressedItem] = useState(null);
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -24,12 +22,6 @@ export default function TeacherChangepass() {
     setPressedItem(null);
   };
 
-  const handleSubmit = () => {
-
-    console.log("Old Password:", oldPassword);
-    console.log("New Password:", newPassword);
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -38,34 +30,10 @@ export default function TeacherChangepass() {
         </TouchableOpacity>
         <Image source={Logo} style={styles.logo} />
       </View>
-      <Text style={styles.dashboardText}>Change Password</Text>
-      <View style={styles.profileContainer}>
-        <Icon name="user-circle" size={100} color="#000" />
-        <Text style={styles.nameText}>CHRISTIAN JAY ABRAGAN</Text>
-        <Text style={styles.roleText}>INSTRUCTOR</Text>
-        <Text style={styles.idText}>2021301831</Text>
+      <Text style={styles.dashboardText}>Notification</Text>
+      <View style={styles.grid}>
+        {/* Notification items or content can be added here */}
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Old Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Old Password"
-          secureTextEntry={true}
-          value={oldPassword}
-          onChangeText={setOldPassword}
-        />
-        <Text style={styles.label}>New Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter New Password"
-          secureTextEntry={true}
-          value={newPassword}
-          onChangeText={setNewPassword}
-        />
-      </View>
-      <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-        <Text style={styles.submitButtonText}>Submit</Text>
-      </TouchableOpacity>
 
       <Modal isVisible={isModalVisible} onBackdropPress={toggleModal} style={styles.modal}>
         <View style={styles.modalContent}>
@@ -99,16 +67,18 @@ export default function TeacherChangepass() {
               navigation.navigate("TeacherNotification");
             }}
           >
-            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Profile</Text>
+            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Notification</Text>
           </Pressable>
           <TouchableOpacity style={styles.logoutButton} onPress={() => {
-            toggleModal(); navigation.navigate("LoginScreen")
+            toggleModal();
+            navigation.navigate("LoginScreen");
           }}>
             <Icon name="sign-out" size={20} color="#fff" />
             <Text style={styles.logoutText}>LOG OUT</Text>
           </TouchableOpacity>
         </View>
       </Modal>
+
     </View>
   );
 }
@@ -144,55 +114,10 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "500",
   },
-  profileContainer: {
+  grid: {
+    flex: 1,
     alignItems: "center",
-    marginBottom: 40,
-  },
-  nameText: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-  roleText: {
-    fontSize: 18,
-    color: "#888",
-  },
-  idText: {
-    fontSize: 16,
-    color: "#888",
-  },
-  inputContainer: {
-    marginBottom: 40,
-    marginLeft: 10,
-    marginRight: 10,
-
-  },
-  label: {
-    fontSize: 16,
-    color: "#000",
-    marginBottom: 5,
-  },
-  input: {
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 20,
-    paddingHorizontal: 10,
-  },
-  submitButton: {
-    backgroundColor: "#024089",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    marginLeft: 10,
-    marginRight: 10,
-    borderWidth: 1,
-    elevation: 5,
-  },
-  submitButtonText: {
-    color: "#fff",
-    fontSize: 18,
+    justifyContent: "center",
   },
   modal: {
     justifyContent: 'flex-start',

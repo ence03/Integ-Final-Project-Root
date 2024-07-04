@@ -18,8 +18,8 @@ const LoginScreen = () => {
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    navigation.navigate("Dashboard"); //for students na
-    // navigation.navigate("TeacherDashboard"); //for teacher na sya
+    // navigation.navigate("Dashboard"); //for students na
+    navigation.navigate("TeacherDashboard"); //for teacher na sya
   };
 
   const toggleHelpModal = () => {
