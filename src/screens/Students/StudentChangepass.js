@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import Logo from "../../../assets/image/logo.png";
 import Modal from 'react-native-modal';
 
-export default function TeacherChangepass() {
+export default function StudentChangepass() {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [pressedItem, setPressedItem] = useState(null);
@@ -25,7 +25,7 @@ export default function TeacherChangepass() {
   };
 
   const handleSubmit = () => {
-
+    // Handle password change logic here
     console.log("Old Password:", oldPassword);
     console.log("New Password:", newPassword);
   };
@@ -42,7 +42,7 @@ export default function TeacherChangepass() {
       <View style={styles.profileContainer}>
         <Icon name="user-circle" size={100} color="#000" />
         <Text style={styles.nameText}>CHRISTIAN JAY ABRAGAN</Text>
-        <Text style={styles.roleText}>INSTRUCTOR</Text>
+        <Text style={styles.roleText}>BSIT 3R2</Text>
         <Text style={styles.idText}>2021301831</Text>
       </View>
       <View style={styles.inputContainer}>
@@ -82,10 +82,24 @@ export default function TeacherChangepass() {
             onPressOut={handlePressOut}
             onPress={() => {
               toggleModal();
-              navigation.navigate("TeacherCourseManagement");
+              navigation.navigate("CourseManagement");
             }}
           >
             <Text style={pressedItem === 'Course Management' ? styles.menuTextPressed : styles.menuText}>Course Management</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.menuItem,
+              pressedItem === 'Grades' && styles.menuItemPressed,
+            ]}
+            onPressIn={() => handlePressIn('Grades')}
+            onPressOut={handlePressOut}
+            onPress={() => {
+              toggleModal();
+              navigation.navigate("StudentGrade");
+            }}
+          >
+            <Text style={pressedItem === 'Grades' ? styles.menuTextPressed : styles.menuText}>Grades</Text>
           </Pressable>
           <Pressable
             style={({ pressed }) => [
@@ -96,7 +110,7 @@ export default function TeacherChangepass() {
             onPressOut={handlePressOut}
             onPress={() => {
               toggleModal();
-              navigation.navigate("TeacherNotification");
+              navigation.navigate("StudentNotification");
             }}
           >
             <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Profile</Text>
@@ -245,7 +259,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fa841a",
     padding: 10,
     borderRadius: 5,
-    marginTop: 355,
+    marginTop: 300,
     borderWidth: 1,
   },
   logoutText: {

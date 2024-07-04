@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, Pressable } from "react-native";
+import React, {useState} from "react";
+import { StyleSheet, Text, View, TouchableOpacity, Image, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "@react-navigation/native";
 import Logo from "../../../assets/image/logo.png";
 import Modal from 'react-native-modal';
 
-export default function TeacherChangepass() {
+export default function Dashboard() {
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [pressedItem, setPressedItem] = useState(null);
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -24,12 +22,6 @@ export default function TeacherChangepass() {
     setPressedItem(null);
   };
 
-  const handleSubmit = () => {
-
-    console.log("Old Password:", oldPassword);
-    console.log("New Password:", newPassword);
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -38,36 +30,34 @@ export default function TeacherChangepass() {
         </TouchableOpacity>
         <Image source={Logo} style={styles.logo} />
       </View>
-      <Text style={styles.dashboardText}>Change Password</Text>
-      <View style={styles.profileContainer}>
-        <Icon name="user-circle" size={100} color="#000" />
-        <Text style={styles.nameText}>CHRISTIAN JAY ABRAGAN</Text>
-        <Text style={styles.roleText}>INSTRUCTOR</Text>
-        <Text style={styles.idText}>2021301831</Text>
+      <Text style={styles.dashboardText}>Dashboard</Text>
+      <View style={styles.grid}>
+        <TouchableOpacity style={[styles.card, styles.profileCard]}
+        onPress={() => navigation.navigate("StudentProfile")}>
+          <Icon name="user" size={52} color="#fff" />
+          <Text style={styles.cardText}>PROFILE</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.card, styles.notificationCard]}
+          onPress={() => navigation.navigate("StudentNotification")}>
+          <Icon name="bell" size={50} color="#fff" />
+          <Text style={styles.cardText}>NOTIFICATION</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={[styles.card, styles.gradesCard]}
+          onPress={() => navigation.navigate("StudentGrade")}>
+          <Icon name="graduation-cap" size={40} color="#fff" />
+          <Text style={styles.cardText}>GRADES</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.card, styles.courseCard]}
+          onPress={() => navigation.navigate("CourseManagement")}
+        >
+          <Icon name="book" size={40} color="#fff" />
+          <Text style={styles.cardText}>COURSE MANAGEMENT</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Old Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter Old Password"
-          secureTextEntry={true}
-          value={oldPassword}
-          onChangeText={setOldPassword}
-        />
-        <Text style={styles.label}>New Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter New Password"
-          secureTextEntry={true}
-          value={newPassword}
-          onChangeText={setNewPassword}
-        />
-      </View>
-      <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-        <Text style={styles.submitButtonText}>Submit</Text>
-      </TouchableOpacity>
 
-      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal} style={styles.modal}>
+      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
+
         <View style={styles.modalContent}>
           <View style={styles.modalHeader}>
             <Icon name="user-circle" size={50} color="#000" />
@@ -82,10 +72,24 @@ export default function TeacherChangepass() {
             onPressOut={handlePressOut}
             onPress={() => {
               toggleModal();
-              navigation.navigate("TeacherCourseManagement");
+              navigation.navigate("CourseManagement");
             }}
           >
             <Text style={pressedItem === 'Course Management' ? styles.menuTextPressed : styles.menuText}>Course Management</Text>
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              styles.menuItem,
+              pressedItem === 'Grades' && styles.menuItemPressed,
+            ]}
+            onPressIn={() => handlePressIn('Grades')}
+            onPressOut={handlePressOut}
+            onPress={() => {
+              toggleModal();
+              navigation.navigate("StudentGrade");
+            }}
+          >
+            <Text style={pressedItem === 'Grades' ? styles.menuTextPressed : styles.menuText}>Grades</Text>
           </Pressable>
           <Pressable
             style={({ pressed }) => [
@@ -96,10 +100,10 @@ export default function TeacherChangepass() {
             onPressOut={handlePressOut}
             onPress={() => {
               toggleModal();
-              navigation.navigate("TeacherNotification");
+              navigation.navigate("StudentNotification");
             }}
           >
-            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Profile</Text>
+            <Text style={pressedItem === 'Notification' ? styles.menuTextPressed : styles.menuText}>Notification</Text>
           </Pressable>
           <TouchableOpacity style={styles.logoutButton} onPress={() => {
             toggleModal(); navigation.navigate("LoginScreen")
@@ -144,61 +148,55 @@ const styles = StyleSheet.create({
     margin: 10,
     fontWeight: "500",
   },
-  profileContainer: {
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+  },
+  card: {
+    borderRadius: 10,
+    width: "40%",
+    height: 120,
+    justifyContent: "center",
     alignItems: "center",
-    marginBottom: 40,
-  },
-  nameText: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-  roleText: {
-    fontSize: 18,
-    color: "#888",
-  },
-  idText: {
-    fontSize: 16,
-    color: "#888",
-  },
-  inputContainer: {
-    marginBottom: 40,
-    marginLeft: 10,
-    marginRight: 10,
-
-  },
-  label: {
-    fontSize: 16,
-    color: "#000",
-    marginBottom: 5,
-  },
-  input: {
-    height: 40,
-    borderColor: "#ccc",
+    marginVertical: 10,
+    elevation: 10,
     borderWidth: 1,
-    borderRadius: 5,
-    marginBottom: 20,
-    paddingHorizontal: 10,
+    borderColor: "#000",
   },
-  submitButton: {
+  profileCard: {
+    height: 192,
+    width: 141,
     backgroundColor: "#024089",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    marginLeft: 10,
-    marginRight: 10,
-    borderWidth: 1,
-    elevation: 5,
+    marginLeft: 20,
   },
-  submitButtonText: {
+  notificationCard: {
+    height: 192,
+    width: 141,
+    backgroundColor: "#8ecae6",
+    marginRight: 20,
+  },
+  gradesCard: {
+    width: 296,
+    backgroundColor: "#fa841a",
+  },
+  courseCard: {
+    width: 296,
+    backgroundColor: "#fda300",
+  },
+  cardText: {
     color: "#fff",
     fontSize: 18,
+    fontWeight: "semibold",
+    textAlign: "center",
+    marginTop: 10,
   },
+//menu ni sya
   modal: {
     justifyContent: 'flex-start',
     margin: 0,
     marginRight: 50,
-    marginTop: 45,
+    marginTop: 45, 
   },
   modalContent: {
     backgroundColor: "white",
@@ -245,8 +243,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fa841a",
     padding: 10,
     borderRadius: 5,
-    marginTop: 355,
-    borderWidth: 1,
+    marginTop: 300,
+    borderWidth: 1, 
   },
   logoutText: {
     color: "#fff",

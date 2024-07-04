@@ -1,30 +1,41 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Pressable} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Pressable } from "react-native";
 import Checkbox from "expo-checkbox";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Logo from "../../../assets/image/logo.png";
 import { useNavigation } from "@react-navigation/native";
 import Modal from 'react-native-modal';
 
-
-export default function TeacherCourseManagement() {
-  const [selectedCourses, setSelectedCourses] = useState(Array(7).fill(false));
+const TeacherCourseManagement = () => {
+  const [selectedCourses, setSelectedCourses] = useState([]);
   const [heldCourse, setHeldCourse] = useState(null);
+  const [courses, setCourses] = useState([
+    { CourseID: "IT311", Description: "Information Assurance and Security", Credits: 3 },
+    { CourseID: "IT312", Description: "Networking 2", Credits: 3 },
+    { CourseID: "IT313", Description: "Mobile Programming", Credits: 3 },
+    { CourseID: "IT314", Description: "Software Engineering", Credits: 3 },
+    { CourseID: "IT315", Description: "Database Systems", Credits: 3 },
+    { CourseID: "IT316", Description: "Artificial Intelligence", Credits: 3 },
+    { CourseID: "IT317", Description: "Web Development", Credits: 3 },
+  ]);
   const navigation = useNavigation();
   const [isModalVisible, setModalVisible] = useState(false);
   const [pressedItem, setPressedItem] = useState(null);
 
   const toggleCheckbox = (index) => {
     const newSelectedCourses = [...selectedCourses];
-    newSelectedCourses[index] = !newSelectedCourses[index];
-    setSelectedCourses(newSelectedCourses);
+    if (newSelectedCourses.includes(index)) {
+      setSelectedCourses(newSelectedCourses.filter(course => course !== index));
+    } else {
+      setSelectedCourses([...newSelectedCourses, index]);
+    }
   };
 
   const handleCoursePressIn = (index) => {
     setHeldCourse(index);
   };
 
-  const handleCoursePressOut = (index) => {
+  const handleCoursePressOut = () => {
     setHeldCourse(null);
     navigation.navigate("EnrolledStudents");
   };
@@ -41,15 +52,13 @@ export default function TeacherCourseManagement() {
     setPressedItem(null);
   };
 
-  const courses = [
-    { CourseID: "IT311", Description: "Information Assurance and Security", Credits: 3 },
-    { CourseID: "IT312", Description: "Networking 2", Credits: 3 },
-    { CourseID: "IT313", Description: "Mobile Programming", Credits: 3 },
-    { CourseID: "IT314", Description: "Software Engineering", Credits: 3 },
-    { CourseID: "IT315", Description: "Database Systems", Credits: 3 },
-    { CourseID: "IT316", Description: "Artificial Intelligence", Credits: 3 },
-    { CourseID: "IT317", Description: "Web Development", Credits: 3 },
-  ];
+  const handleDropCourses = () => {
+    // Filter out the selected courses from the courses list
+    const newCourses = courses.filter((_, index) => !selectedCourses.includes(index));
+    setCourses(newCourses);
+    setSelectedCourses([]);
+    // Here you would handle the actual drop logic (e.g., API call)
+  };
 
   return (
     <View style={styles.container}>
@@ -60,7 +69,7 @@ export default function TeacherCourseManagement() {
         <Image source={Logo} style={styles.logo} />
       </View>
       <View style={styles.content}>
-        <Text style={styles.headerText}>Course management</Text>
+        <Text style={styles.headerText}>Course Management</Text>
         <ScrollView style={styles.tableContainer}>
           <View style={styles.tableHeader}>
             <Text style={styles.tableHeaderText}>Course Name</Text>
@@ -70,10 +79,10 @@ export default function TeacherCourseManagement() {
               key={index}
               style={styles.tableRow}
               onPressIn={() => handleCoursePressIn(index)}
-              onPressOut={() => handleCoursePressOut(index)}
+              onPressOut={handleCoursePressOut}
             >
               <Checkbox
-                value={selectedCourses[index]}
+                value={selectedCourses.includes(index)}
                 onValueChange={() => toggleCheckbox(index)}
                 style={styles.checkbox}
               />
@@ -90,16 +99,25 @@ export default function TeacherCourseManagement() {
         </ScrollView>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.dropButton}>
+        <TouchableOpacity style={styles.dropButton} onPress={handleDropCourses}>
           <Text style={styles.dropButtonText}>Drop</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.addButton}>
+          style={styles.addButton}
+          onPress={() =>
+            navigation.navigate("TeacherAddCourse", {
+              onEnroll: (newCourses) => {
+                //e  Update lang ang course list sa new courses.....
+                setCourses((prevCourses) => [...prevCourses, ...newCourses]);
+              },
+            })
+          }
+        >
           <Text style={styles.addButtonText}>Add Course</Text>
         </TouchableOpacity>
-        </View>
+      </View>
 
-        <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
+      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}style={styles.modal}>
 
 <View style={styles.modalContent}>
   <View style={styles.modalHeader}>
@@ -118,7 +136,7 @@ export default function TeacherCourseManagement() {
       navigation.navigate("TeacherCourseManagement");
     }}
   >
-    <Text style={pressedItem === 'Course Management' ? styles.menuTextPressed : styles.menuText}>Course Management</Text>
+    <Text style={pressedItem === 'Course Management' ? styles.menuTextPressed : styles.menuText}>Course & Student Management</Text>
   </Pressable>
   <Pressable
     style={({ pressed }) => [
@@ -136,7 +154,7 @@ export default function TeacherCourseManagement() {
   </Pressable>
   <TouchableOpacity style={styles.logoutButton} onPress={() => {
     toggleModal(); navigation.navigate("LoginScreen")
-  }}>
+    }}>
     <Icon name="sign-out" size={20} color="#fff" />
     <Text style={styles.logoutText}>LOG OUT</Text>
   </TouchableOpacity>
@@ -144,7 +162,7 @@ export default function TeacherCourseManagement() {
 </Modal>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -161,7 +179,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
     marginTop: 20,
-    fontSize: 24,
   },
   logo: {
     width: 150,
@@ -173,17 +190,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 10,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  content: {
-    padding: 20,
-  },
   headerText: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 5,
+  },
+  content: {
+    padding: 20,
   },
   tableContainer: {
     marginBottom: 20,
@@ -214,11 +227,6 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     marginRight: 10,
-  },
-  totalUnitsText: {
-    fontSize: 16,
-    marginBottom: 20,
-    textAlign: "right",
   },
   buttonContainer: {
     marginLeft: 10,
@@ -313,3 +321,5 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
+
+export default TeacherCourseManagement;

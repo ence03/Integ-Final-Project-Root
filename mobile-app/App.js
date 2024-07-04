@@ -16,6 +16,7 @@ import StudentProfile from "./src/screens/Students/StudentProfile";
 import TeacherProfile from "./src/screens/Teacher/TeacherProfile";
 import StudentChangepass from "./src/screens/Students/StudentChangepass";
 import TeacherChangepass from "./src/screens/Teacher/TeacherChangepass";
+import TeacherAddCourse from "./src/screens/Teacher/TeacherAddCourse";
 
 const Stack = createStackNavigator();
 
@@ -81,6 +82,11 @@ export default function App() {
         <Stack.Screen
           name="AddStudents"
           component={AddStudents}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TeacherAddCourse"
+          component={TeacherAddCourse}
           options={{ headerShown: false }}
         />
         <Stack.Screen
